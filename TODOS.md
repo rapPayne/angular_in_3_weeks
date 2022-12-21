@@ -1,4 +1,4 @@
-* Figure out git sitch
+* Solve the git situation
 * Write proposal for Angular in 3 weeks so I can do 2 in a day.
 
 # Server
