@@ -22,14 +22,14 @@
 - 🧑‍💻 [Hands on – Reacting to events](labs/2.6%20Events/)
 
 - 🧑‍🔬 How to route
-  - react-router V6
+  - RouterLink
   - Route parameters
-- 🧑‍💻 [React Router](labs/1.5%20React%20Router/)
+- 🧑‍💻 [Angular Router](labs/1.5%20Angular%20Router/)
 
-## Week 2 – 4 hours – Prettier and smarter React
+## Week 2 – 4 hours – TBD
 - Review, conditionals, events, Images, styles
 
-- 🧑‍🔬 Hello React (Part 2 of 3) – The virtual DOM
+- 🧑‍🔬 Hello Angular (Part 2 of 3) – TBD
 
 - 🧑‍🔬 How to display data
   - Expressions
