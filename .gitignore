@@ -1,5 +1,8 @@
+**/working
+
 **/.DS_STORE
 
+**/.angular
 **/dist/
 *.log
 **/node_modules
