@@ -1,5 +1,6 @@
 import { readDatabase, saveDatabase } from '../repository.mjs';
 
+
 export const orderRouter = (app) => {
   app.get("/orders", getOrdersRoute);
   app.get("/orders/current", getCurrentOrdersRoute);
@@ -7,7 +8,7 @@ export const orderRouter = (app) => {
   app.post("/placeOrder", placeOrderRoute);
 }
 
-export const placeOrderRoute = (req, res) => {
+const placeOrderRoute = (req, res) => {
   let user = req.user;
   console.log("placing order", res.body);
   if (!user) {
@@ -34,7 +35,7 @@ const getOrderRoute = (req, res) => {
   let user = req.user;
   let orderId = req.params.id;
   console.log(`Gettting a single order ${orderId}. user id is ${user?.id}`);
-  if (!user) {
+  if (!user && !req.skipAuth) {
     res.status(403).send("Please log in before trying to view your order")
     return;
   }
@@ -48,7 +49,7 @@ const getOrderRoute = (req, res) => {
   order.items = order.items?.map(item => ({
     ...item, ...menuItems.find(mi => mi.id === item.id)
   }));
-  if (user?.adminUser || user?.isServer || order?.userId === +user?.id)
+  if (req.skipAuth || user?.adminUser || user?.isServer || order?.userId === +user?.id)
     res.send(order);
   else {
     res.status(403).send("That's not your order. You can't see it.")
@@ -62,12 +63,12 @@ const getOrderRoute = (req, res) => {
 const getCurrentOrdersRoute = (req, res) => {
   let user = req.user;
   console.log("user id is", user?.id)
-  if (!user) {
+  if (!req.skipAuth && !user) {
     res.status(403).send("Please log in before trying to view orders")
     return;
   }
   const orders = readDatabase().orders.filter(o => o.status !== "completed");
-  if (user?.adminUser || user?.isServer)
+  if (req.skipAuth || user?.adminUser || user?.isServer)
     res.send(orders);
   else {
     res.send(orders.filter(o => o.userId === +user?.id))
@@ -80,12 +81,12 @@ const getCurrentOrdersRoute = (req, res) => {
  */
 const getOrdersRoute = (req, res) => {
   let user = req.user;
-  if (!user) {
+  if (!req.skipAuth && !user) {
     res.status(403).send();
     return;
   }
   const orders = readDatabase().orders;
-  if (user?.adminUser || user?.isServer)
+  if (req.skipAuth || user?.adminUser || user?.isServer)
     res.send(orders);
   else {
     res.send(orders.filter(o => o.userId === +user?.id))

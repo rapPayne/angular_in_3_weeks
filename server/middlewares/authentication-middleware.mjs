@@ -29,6 +29,13 @@ export function authRouter(app) {
     next();
   });
 
+  // Middleware to skip auth for certain routes
+  app.use((req, res, next) => {
+    if (app.skipAuth)
+      req.skipAuth = true;
+    next();
+  });
+
   // POST /login - if good username/password, write an auth token.
   app.post("/login", (req, res) => {
     const { username, password } = req.body;
