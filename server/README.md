@@ -9,7 +9,7 @@ npm run load-db
 npm start
 ```
 ## To get data from it
-Make GET requests using Postman or (http://hoppscotch.io)[Hoppscotch]. But you'll need to authenticate to get to certain orders and other things.
+Make GET requests using Postman or [Hoppscotch](http://hoppscotch.io). But you'll need to authenticate to get to certain orders and other things.
 
 ## To authenticate
 Make a POST request to /login with {"username": ____, "password": "pass" }. (All passwords are pass until you decide to change them.)
@@ -63,7 +63,7 @@ TODO: Category should eventually be a collection/enum
 
 ### login (POST)
 ### orders (GET, PATCH)
-- authorization: only if user.isServer
+- authorization: only if user.isServer or user.adminUser or user.id === order.userId
 ### menuItems (GET)
 ### users (GET, PATCH)
 - Authorization: Only if admin users only
