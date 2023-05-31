@@ -5,14 +5,14 @@
 ## Setting the year in the footer
 Did you notice how badly out of date the year is in the footer? You'll have to change that every December 31 at midnight unless you allow Angular to change it automatically.
 
-1. Edit app.component.html. Change the `<p>` in the `<footer>` like so:
+1. Edit `app.component.html`. Change the `<p>` in the `<footer>` like so:
 ```html
 <p>Copyright &copy; {{ today.getFullYear() }} Dinner and a Movie</p>
 ```
 
 It doesn't work because it is relying on a property in the business class called `today`. Let's establish that property. 
 
-2. Edit app.component.ts. Add this in the class:
+2. Edit `app.component.ts`. Add this in the class:
 ```typescript
 today: Date = new Date();
 ```
@@ -23,7 +23,7 @@ today: Date = new Date();
 
 Let's say that we want our app to greet the user by name. In the page header, let's put a place for the user's name. 
 
-1. Add a placeholder to the header: 
+1. Add a user's first name placeholder to the header: 
 ```html
     <a href="'/login'">Login</a>
     <span> Hello, {{ user.first }}!</span>  <!-- Add this line -->
@@ -31,17 +31,17 @@ Let's say that we want our app to greet the user by name. In the page header, le
 </header>
 ```
 
-2. Then in app.component.ts, add this:
+2. Then in `app.component.ts`, add this:
 ```typescript
 user: any = {first: "Jo" }
 ```
 
-3. View it in the browser. Now put your name in app.component.ts instead of "Jo". See how it uses that variable instead?
+3. View it in the browser. Try putting your name in `app.component.ts` instead of "Jo". See how it uses that variable instead?
 
 ## Displaying a whole object
-Let's tackle a big one! In the OrdersComponent, we're going to display an entire order. 
+Let's tackle a big one. In the OrdersComponent, we're going to display an entire order. 
 
-1. Edit order.component.ts. Make it look like this:
+1. Edit `order.component.ts`. Make it look like this:
 ```typescript
 export class OrderComponent {
   order: any = {
@@ -57,7 +57,7 @@ export class OrderComponent {
 }
 ```
 
-2. Now let's display it. Edit order.component.html. Replace its entire contents with this:
+2. Now let's display that order. Edit `order.component.html`. Replace its entire contents with this:
 ```html
 <h2>Order {{ order.id }}</h2>
 
@@ -73,7 +73,7 @@ export class OrderComponent {
 <a href="/orders">Back to orders</a>
 ```
 
-3. Ready to see it in the browser? You'll have to tell app.component.html to display it! Put it's tag in app.component.html:
+3. Ready to see it in the browser? You'll have to tell app.component.html to display it. Put it's tag in `app.component.html`:
 ```html
 <app-order />
 ```
