@@ -15,7 +15,7 @@ And now that we've got some items, let's use those to get the order's sub-total 
 
 See if you can write it yourself. But if you need help, here's a possible solution:
 
-<detail>
+<details>
 <summary>Expand for a possible solution</summary>
 ```typescript
 getSubtotal(order: any) {
@@ -23,11 +23,11 @@ getSubtotal(order: any) {
     acc + item.price, 0);
 }
 ```
-</detail>
+</details>
 
 And here's another functional programming way of doing it.
 
-<detail>
+<details>
 <summary>Expand for a very concise solution</summary>
 ```typescript
 getSubtotal(order: any) {
@@ -35,25 +35,25 @@ getSubtotal(order: any) {
     acc + item.price, 0);
 }
 ```
-</detail>
+</details>
 
 3. Now do the same for the `getTotal()` method. Again, it is adding the sub-total, the tax and the tip. See if you can write it yourself without peeking at the answer below.
 
-<detail>
+<details>
 <summary>Expand for a possible solution</summary>
 ```typescript
 getTotal(order: any) {
   return this.getSubtotal(order) + order.tax + order.tip;
 }
 ```
-</detail>
+</details>
 
 ## Using the calculations
 Now let's interpolate these functions on our HTML template.
 
 1. Edit `order.component.html`. Put in two new lines, one for "Subtotal" and another for "Total". Call these functions from the HTML to calculate and display the values.
 
-<detail>
+<details>
 <summary>Expand for a possible solution</summary>
 ```html
 ...
@@ -66,7 +66,7 @@ Now let's interpolate these functions on our HTML template.
 <p class="money total">Total: {{ getTotal(order) }}</p>
 <a [routerLink]="'/orders'">Back to orders</a>
 ```
-</detail>
+</details>
 
 2. Run and view in the browser.
 
