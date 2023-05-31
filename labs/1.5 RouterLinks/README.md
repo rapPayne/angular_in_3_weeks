@@ -5,7 +5,7 @@
 This topic is small but it has a _major_ impact on performance and operation. With routerLinks we avoid round-trips to the server and redundant reloads of your app.
 
 ## Changing the links to routerLinks.
-1. Browse to the [home {_ext}](http://localhost:4200) view. Open developer tools by hitting F12 on Windows or cmd-opt-i on Macs or by hitting the hamburger menu in your browser. Open the network tab. If there's any existing traffic logged, clear it out by hitting the clear button which looks like this
+1. Browse to the [home](http://localhost:4200) view. Open developer tools by hitting F12 on Windows or cmd-opt-i on Macs or by hitting the hamburger menu in your browser. Open the network tab. If there's any existing traffic logged, clear it out by hitting the clear button which looks like this
 
 ![clear](../assets/DevTools%20clear.png)
 
@@ -19,6 +19,7 @@ This topic is small but it has a _major_ impact on performance and operation. Wi
   <a [routerLink]="'/areas'">Areas</a>
   <a [routerLink]="'/logout'">Logout</a>
   <a [routerLink]="'/login'">Login</a>
+  <span> Hello, {{ user.first }}!</span>
 </nav>
 ```
 Note the extra set of single quotes inside the double quotes now. These are needed for Angular's routing.
@@ -26,7 +27,7 @@ Note the extra set of single quotes inside the double quotes now. These are need
 4. Clear out the network tab in the browser again. Navigate around using these routerlinks. Notice -- no trips to the server! We're staying client side.
 
 ## Navigating from the NotFoundComponent
-1. Navigate to [http://localhost:3000/NonsenseURL](http://localhost:3000/NonsenseURL). The NotFoundComponent is displayed. That's good but this component is ugly.
+1. Navigate to [http://localhost:4200/NonsenseURL](http://localhost:4200/NonsenseURL). The NotFoundComponent is displayed. That's good but this component is ugly.
 
 2. Replace the entire contents of `not-found.component.html` with this.
 ```html
