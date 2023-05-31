@@ -76,6 +76,7 @@ You should see your out-of-the box Angular application running!
   <h1>YOUR REAL CONTENT WILL GO HERE</h1>
 </main>
 <footer>
+  <p>Copyright &copy; 2005 Dinner and a Movie</p>
 </footer>
 ```
 The moment you hit 'save' in your IDE, the terminal window will recompile, the browser will refresh and you'll see your new content! Now, how cool is that?
