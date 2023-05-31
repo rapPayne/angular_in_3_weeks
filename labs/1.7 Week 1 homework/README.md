@@ -41,6 +41,7 @@ getSubtotal(order: any) {
 
 <details>
 <summary>Expand for a possible solution</summary>
+
 ```typescript
 getTotal(order: any) {
   return this.getSubtotal(order) + order.tax + order.tip;
@@ -55,6 +56,7 @@ Now let's interpolate these functions on our HTML template.
 
 <details>
 <summary>Expand for a possible solution</summary>
+
 ```html
 ...
 <p>Order time: {{ order.orderTime }}</p>
