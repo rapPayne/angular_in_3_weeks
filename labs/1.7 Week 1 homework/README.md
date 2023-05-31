@@ -6,7 +6,22 @@ The diners will be adding menu items to their orders. Let's add that to our hard
 
 1. Edit `order.component.ts`. Make the order in ngOnInit look like this:
 ```typescript
-
+this.order = {
+  id: orderId,
+  orderTime: "2099-03-30T18:26:13.161Z",
+  pickupTime: "2099-03-30T18:38:03.286Z",
+  area: "Theater 1",
+  location: "Table 6",
+  tax: 3.89,
+  tip: 9.44,
+  items: [                               // <-- Add this
+    { id: 1, itemId: 9, price: 11.75, }, // <-- Add this
+    { id: 2, itemId: 1, price: 9.54,},   // <-- Add this
+    { id: 3, itemId: 1, price: 8.34, },  // <-- Add this
+    { id: 4, itemId: 8, price: 10.25, }, // <-- Add this
+  ],                                     // <-- Add this
+  status: "completed"
+}
 ```
 
 And now that we've got some items, let's use those to get the order's sub-total and the order total, which is just the sub-total plus tax and tip.
@@ -17,6 +32,7 @@ See if you can write it yourself. But if you need help, here's a possible soluti
 
 <details>
 <summary>Expand for a possible solution</summary>
+
 ```typescript
 getSubtotal(order: any) {
   return order?.items?.reduce((acc: number, item: any) =>
@@ -29,6 +45,7 @@ And here's another functional programming way of doing it.
 
 <details>
 <summary>Expand for a very concise solution</summary>
+
 ```typescript
 getSubtotal(order: any) {
   return order?.items?.reduce((acc: number, item: any) =>
@@ -70,7 +87,7 @@ Now let's interpolate these functions on our HTML template.
 ```
 </details>
 
-2. Run and view in the browser.
+2. Run and view in the browser. You should get a sub-total of about $39.88 and a total of about $53.21. Don't worry about rounding errors or formatting for now. We'll fix that later. (Or you can study Angular pipes if you like).
 
 3. Bonus!! Add the CSS classes like you see in my code snippet above ("money" and "total"). We'll use those when we get to styling.
 

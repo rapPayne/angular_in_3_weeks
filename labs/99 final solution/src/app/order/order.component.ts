@@ -23,9 +23,8 @@ export class OrderComponent {
   }
 
   getSubtotal(order: any) {
-    return order?.items?.reduce((acc: number, item: any) => {
-      return acc + item.price;
-    }, 0);
+    return order?.items?.reduce((acc: number, item: any) =>
+      acc + item.price, 0);
   }
 
   getTotal(order: any) {
