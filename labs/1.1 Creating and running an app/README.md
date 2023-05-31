@@ -65,11 +65,11 @@ You should see your out-of-the box Angular application running!
 ```html
 <header>
   <nav>
-    <a href="'/'">Main</a>
-    <a href="'/orders'">Orders</a>
-    <a href="'/areas'">Areas</a>
-    <a href="'/logout'">Logout</a>
-    <a href="'/login'">Login</a>
+    <a href="/">Main</a>
+    <a href="/orders">Orders</a>
+    <a href="/areas">Areas</a>
+    <a href="/logout">Logout</a>
+    <a href="/login">Login</a>
   </nav>
 </header>
 <main>
