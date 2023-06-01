@@ -22,6 +22,12 @@ If there's a problem, they'll write how to solve it in the comments.
 Obviously we need a place to get the data so we've provided a RESTful server that will be serving the data.
 You can find it [here](server).
 
+This server is from a separate git project which we've submoduled with this:
+```bash
+git submodule add git@github.com:rapPayne/daam-server.git server
+```
+So as a separate project, you won't make changes here, you'll make changes in the https://github.com/rapPayne/daam-server project.
+
 ## The pages/views
 
 ### Dashboard
