@@ -42,6 +42,6 @@ export class OrderComponent {
   }
 
   getTotal(order: any) {
-    return this.getSubtotal(order) + order.tax + order.tip;
+    return this.getSubtotal(order) + order?.tax + order?.tip;
   }
 }

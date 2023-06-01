@@ -8,7 +8,7 @@ Remember that we created a route (/orders/:id) with a route parameter. Let's ena
 
 1. Remember, you're hardcoding order 20254 in order.component.ts. You're using it in order.component.html.
 ```html
-<h2>Order number: {{ order.id }}</h2>
+<h2>Order number: {{ order?.id }}</h2>
 ```
 
 2. Run and visit [http://localhost:4200/orders/1337](http://localhost:4200/orders/1337) you'll see Order 20254 in the `<h2>`

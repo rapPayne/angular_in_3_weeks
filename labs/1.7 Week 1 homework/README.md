@@ -61,7 +61,7 @@ getSubtotal(order: any) {
 
 ```typescript
 getTotal(order: any) {
-  return this.getSubtotal(order) + order.tax + order.tip;
+  return this.getSubtotal(order) + order?.tax + order?.tip;
 }
 ```
 </details>
@@ -76,12 +76,12 @@ Now let's interpolate these functions on our HTML template.
 
 ```html
 ...
-<p>Order time: {{ order.orderTime }}</p>
-<p>Pickup time: {{ order.pickupTime }}</p>
+<p>Order time: {{ order?.orderTime }}</p>
+<p>Pickup time: {{ order?.pickupTime }}</p>
 
 <p class="money">Subtotal: {{ getSubtotal(order)  }}</p>
-<p class="money">Tax: {{order.tax }}</p>
-<p class="money">Tip: {{order.tip }}</p>
+<p class="money">Tax: {{order?.tax }}</p>
+<p class="money">Tip: {{order?.tip }}</p>
 <p class="money total">Total: {{ getTotal(order) }}</p>
 <a [routerLink]="'/orders'">Back to orders</a>
 ```

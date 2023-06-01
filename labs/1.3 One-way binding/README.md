@@ -59,17 +59,17 @@ export class OrderComponent {
 
 2. Now let's display that order. Edit `order.component.html`. Replace its entire contents with this:
 ```html
-<h2>Order {{ order.id }}</h2>
+<h2>Order {{ order?.id }}</h2>
 
-<p>Area: {{ order.area }}</p>
-<p>Location: {{ order.location }}</p>
-<p>Status: {{ order.status }}</p>
+<p>Area: {{ order?.area }}</p>
+<p>Location: {{ order?.location }}</p>
+<p>Status: {{ order?.status }}</p>
 
-<p>Order time: {{ order.orderTime }}</p>
-<p>Pickup time: {{ order.pickupTime }}</p>
+<p>Order time: {{ order?.orderTime }}</p>
+<p>Pickup time: {{ order?.pickupTime }}</p>
 
-<p>Tax: {{ order.tax }}</p>
-<p>Tip: {{ order.tip }}</p>
+<p>Tax: {{ order?.tax }}</p>
+<p>Tip: {{ order?.tip }}</p>
 <a href="/orders">Back to orders</a>
 ```
 
