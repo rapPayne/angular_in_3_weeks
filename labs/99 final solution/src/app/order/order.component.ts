@@ -1,6 +1,5 @@
 import { Component, WritableSignal, effect, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { OrdersService } from '../orders.service';
 
 @Component({
