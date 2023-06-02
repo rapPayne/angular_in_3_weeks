@@ -4,7 +4,7 @@
 
 The diners will be adding menu items to their orders. Let's add that to our hardcoded order so that we can do some calculations.
 
-1. Edit `order.component.ts`. Make the order in ngOnInit look like this:
+1. Edit `order.component.ts`. Make the order in `ngOnInit` look like this:
 ```typescript
 this.order = {
   id: orderId,
@@ -88,7 +88,5 @@ Now let's interpolate these functions on our HTML template.
 </details>
 
 2. Run and view in the browser. You should get a sub-total of about $39.88 and a total of about $53.21. Don't worry about rounding errors or formatting for now. We'll fix that later. (Or you can study Angular pipes if you like).
-
-3. Bonus!! Add the CSS classes like you see in my code snippet above ("money" and "total"). We'll use those when we get to styling.
 
 Nicely done. See you back in class soon!

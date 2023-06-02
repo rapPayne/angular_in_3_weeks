@@ -11,7 +11,7 @@ ng generate component Home
 
 2. We need to allow wait staff to select the area they're serving. Generate the areas component
 ```bash
-ng generate component Area
+ng generate component Areas
 ```
 
 3. The most important view is where they can see a list of all the food orders so they know what to get from the kitchen and take to the customers. Generate the orders component.
