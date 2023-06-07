@@ -4,7 +4,20 @@
 ## Reinforcing signals and *ngIf
 Our waiters should be able to see their area when looking at their orders. We're going to edit the orders list. We'll add a notice showing what area they've chosen.
 
-1. First we have to define an `area` variable to show. Edit `orders.component.ts` and add it:
+1. First, give our `area.service.ts` a signal called `area`:
+```typescript
+import { Injectable, signal } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AreaService {
+  area = signal("");
+  constructor() { }
+}
+```
+
+2. Next we define an `area` variable to show in the orders list. Edit `orders.component.ts` and add it:
 ```typescript
 export class OrdersComponent {
   orders: Signal<any[]> = signal([]);
@@ -14,6 +27,7 @@ export class OrdersComponent {
     private _ordersService: OrdersService,
     private _areaService: AreaService,  // <-- Inject the Area service
   ) { }
+}
 ```
 Whenever `AreaService.area` changes, our `area` will be notified and will update. This is because `area` is a signal. 
 
@@ -28,7 +42,9 @@ Now we just need to show it to the user.
 ```
 </details>
 
-3. Now make that paragraph appear only if the `area` signal has something in it. (Hint: Use *ngIf.)
+(While testing, please note that you can't see this change at runtime yet because we're not finished wiring up the AreasComponent. But you can simulate it by hardcoding a starting value in `areas.service.ts`. Just put any string in the signal's default value.)
+
+1. Now make that paragraph appear only if the `area` signal has something in it. (Hint: Use *ngIf.)
 <details>
 <summary>Expand for a possible solution</summary>
 
@@ -37,7 +53,7 @@ Now we just need to show it to the user.
 ```
 </details>
 
-4. Lastly, let's put something on the page if there's no area choses. Tell the waiter to go to `/areas` to choose an area. (Hints: Use an `else` in your *ngIf and create a `ng-template`.)
+4. Lastly, let's put something on the page if there's no area chosen. Tell the waiter to go to `/areas` to choose an area. (Hints: Use an `else` in your *ngIf and create a `ng-template`.)
 <details>
 <summary>Expand for a possible solution</summary>
 
@@ -97,7 +113,7 @@ Here's a different method.
 ## When you log in, auto-navigate to "/"
 Our current login process "authenticates" the user when they hit the login button. But we're not giving them any indication that their login was successful. Hey, let's forward them to the HomeComponent when their login is successful.
 
-You're probably thinking "I'll put something behind the login button's click event." But there's a more reactive way. Add a signal effect to the LoginComponent that says when the `user` signal changes, we navigate to the `'/'` route.
+You're probably thinking "I'll put something behind the login button's click event." But there's a more reactive way. Add a signal [effect](https://angular.io/guide/signals#effects) to the LoginComponent that says when the `user` signal changes, we navigate to the `'/'` route.
 
 1. Edit `login.component.ts` and find the constructor.
 2. Inject a `Router` service. (Hint: you'll have to `import { Router } from '@angular/router'`).
@@ -132,3 +148,5 @@ constructor(private _authService: AuthService, private _router: Router) {
 }
 ```
 </details>
+
+4. Alright, try it out. You've got it working if, when you click the login button, you navigate to the Home view.
