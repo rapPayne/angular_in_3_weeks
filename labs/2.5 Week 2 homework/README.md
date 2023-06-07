@@ -2,9 +2,9 @@
 
 
 ## Reinforcing signals and *ngIf
-When looking at their orders, our waiters should be able to see what area they've chosen. We're going to add a notice to their orders list showing what area they've chosen.
+Our waiters should be able to see their area when looking at their orders. We're going to edit the orders list. We'll add a notice showing what area they've chosen.
 
-1. First we have to define a `area` variable to show. Edit `orders.component.ts` and add it:
+1. First we have to define an `area` variable to show. Edit `orders.component.ts` and add it:
 ```typescript
 export class OrdersComponent {
   orders: Signal<any[]> = signal([]);
@@ -22,6 +22,7 @@ Now we just need to show it to the user.
 2. Edit `orders.component.html`. Add a `<p>` to the top that tells the user their area. (Hint: You'll want to interpolate `area` inside double-curly braces. Also, don't forget that `area` is a **signal** that contains a string.)
 <details>
 <summary>Expand for a possible solution</summary>
+
 ```html
 <p>Your area is {{ area() }}</p>
 ```
@@ -30,6 +31,7 @@ Now we just need to show it to the user.
 3. Now make that paragraph appear only if the `area` signal has something in it. (Hint: Use *ngIf.)
 <details>
 <summary>Expand for a possible solution</summary>
+
 ```html
 <p *ngIf="area()">Your area is {{ area() }}</p>
 ```
@@ -38,6 +40,7 @@ Now we just need to show it to the user.
 4. Lastly, let's put something on the page if there's no area choses. Tell the waiter to go to `/areas` to choose an area. (Hints: Use an `else` in your *ngIf and create a `ng-template`.)
 <details>
 <summary>Expand for a possible solution</summary>
+
 ```html
 <p *ngIf="area() ; else noArea">Your area is {{ area() }}</p>
 <ng-template #noArea>
@@ -58,6 +61,7 @@ All you're going to do is edit `app.component.html` and add `*ngIf` conditions t
 
 <details>
 <summary>Expand for a possible solution</summary>
+
 ```html
 <nav>
   <a [routerLink]="'/'">Main</a>
@@ -73,6 +77,7 @@ All you're going to do is edit `app.component.html` and add `*ngIf` conditions t
 Here's a different method.
 <details>
 <summary>Expand for a possible solution</summary>
+
 ```html
 <nav *ngIf="user()">
   <a [routerLink]="'/'">Main</a>
@@ -102,6 +107,7 @@ See if you can figure this out yourself without peeking, but in case you need a 
 
 <details>
 <summary>Expand for a possible solution</summary>
+
 ```typescript
 constructor(
   private _authService: AuthService,
@@ -119,6 +125,7 @@ constructor(
 This solution is more concise but may be harder to read.
 <details>
 <summary>Expand for a possible solution</summary>
+
 ```typescript
 constructor(private _authService: AuthService, private _router: Router) {
   effect(() => (_authService.user()) && this._router.navigate(["/"]))
