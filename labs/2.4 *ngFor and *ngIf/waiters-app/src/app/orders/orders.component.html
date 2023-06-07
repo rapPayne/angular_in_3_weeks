@@ -1,0 +1,6 @@
+<h1>Orders</h1>
+<div *ngFor="let order of orders()" [routerLink]="'/orders/'+order.id">
+  id: {{order.id}}
+  area: {{order.area}}
+  status: {{order.status}}
+</div>
