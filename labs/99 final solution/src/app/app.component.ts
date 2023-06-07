@@ -13,6 +13,6 @@ export class AppComponent {
   constructor(private _authSvc: AuthService) { }
 
   ngOnInit() {
-    this.user = this._authSvc.user;
+    this.user = this._authSvc.user;  // Set our user to the service's user signal
   }
 }

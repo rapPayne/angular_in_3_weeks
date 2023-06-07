@@ -13,15 +13,9 @@ export class LoginComponent {
   password: string = "";
   error: WritableSignal<string> = this._authService.error;
 
-  constructor(
-    private _authService: AuthService,
-    private _router: Router) {
-    // If user changes, navigate to home
-    effect(() => {
-      console.log('changing user: ', this._authService.user());
-      if (this._authService.user())
-        this._router.navigate(['/']);
-    });
+  constructor(private _authService: AuthService, private _router: Router) {
+    // This effect monitors the user signal. If it changes, navigate to HomeComponent
+    effect(() => (_authService.user()) && this._router.navigate(["/"]))
   }
 
   login() {

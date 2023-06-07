@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AreaService } from '../area.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -10,7 +9,5 @@ import { AuthService } from '../auth.service';
 export class HomeComponent {
   restaurantName: string = "Dinner and a Movie";
   user: any = this._authSvc.user;
-  constructor(private _authSvc: AuthService) {
-    this.user = _authSvc.user;
-  }
+  constructor(private _authSvc: AuthService) { }
 }

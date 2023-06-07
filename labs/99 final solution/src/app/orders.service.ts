@@ -14,6 +14,7 @@ export class OrdersService {
     effect(() => console.log(this.currentOrders()));
   }
 
+  /**  Fetch an order by ID and set the currentOrder *signal* to that order. */
   setCurrentOrder(id: number) {
     //TODO: RAP, do I have to pipe it to a take(1) or first to have it unsubscribe?
     this._http.get(`/api/orders/${id}`)
@@ -24,6 +25,7 @@ export class OrdersService {
     console.log('set current order', id)
   }
 
+  /** Updates the order status */
   setStatusOnCurrentOrder(status: string) {
     this._http.patch(`/api/orders/${this.currentOrder().id}`, { status: status })
       .subscribe({
@@ -31,5 +33,4 @@ export class OrdersService {
         error: (err) => console.log(err)
       });
   }
-
 }

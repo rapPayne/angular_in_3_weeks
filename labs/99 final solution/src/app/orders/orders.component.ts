@@ -8,8 +8,8 @@ import { AreaService } from '../area.service';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent {
-  orders: Signal<any[]> = signal([]);
-  area!: Signal<string>;
+  orders: Signal<any[]> = this._ordersService.currentOrders;
+  area: Signal<string> = this._areaService.area;
   myOrders: Signal<any[]> = computed(() => this.orders()?.filter(order => order.area === this.area()));
   otherOrders: Signal<any[]> = computed(() => this.orders()?.filter(order => order.area !== this.area()));
 
@@ -17,11 +17,6 @@ export class OrdersComponent {
     private _ordersService: OrdersService,
     private _areaService: AreaService,  // <-- Inject the Area service
   ) { }
-
-  ngOnInit() {
-    this.area = this._areaService.area;
-    this.orders = this._ordersService.currentOrders;
-  }
 
   getCssClass(order: any) {
     if (order.status === 'readyForGuest') return 'success';
