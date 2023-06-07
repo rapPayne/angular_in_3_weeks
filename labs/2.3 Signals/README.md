@@ -22,7 +22,7 @@ export class OrdersService {
     this.currentOrders = toSignal(obs$);  // Converting the observable to a signal
   }
 
-  /**  Fetch an order by ID and set the currentOrder *signal* to that order. */
+  /** Fetch an order by ID and set the currentOrder *signal* to that order. */
   setCurrentOrder(id: number) {
     this._http.get(`/api/orders/${id}`)
       .subscribe({
@@ -115,6 +115,7 @@ export class AuthService {
   }
 }
 ```
+When this service is injected into any component, it will have access to the `user` signal and if any component sets that signal all the others will be able to see it. We'll set it in Login and Logout and read it in the others.
 
 2. Allow them to log in. Edit `login.component.ts`:
 ```typescript
@@ -124,7 +125,7 @@ export class LoginComponent {
   constructor(private _authService: AuthService) { }
 
   login() {
-    this._authService.login("server1", "bad-password");  // Hardcode the values for now
+    this._authService.login("server1", "bad-password");  // Hardcode the credentials for now
   }
 }
 ```
@@ -146,13 +147,9 @@ Let's prove it!
 ```typescript
 export class AppComponent {
   today: Date = new Date();
-  user: any;
+  user = this._authSvc.user;  // Set our user to the service's user signal
 
-  constructor(private _authSvc: AuthService) { }
-
-  ngOnInit() {
-    this.user = this._authSvc.user;  // Set our user to the service's user signal
-  }
+  constructor(private _authSvc: AuthService) { }   // Inject AuthService
 }
 ```
 

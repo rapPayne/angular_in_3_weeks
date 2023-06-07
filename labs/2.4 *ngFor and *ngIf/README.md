@@ -24,7 +24,7 @@ export class AreasComponent {
 </select>
 ```
 
-3. Run your app. Navigate to "areas". See them? You can't pick any yet but that'll come in a few chapters.
+3. Run your app. Navigate to "areas". See them? Picking one doesn't do anything yet but that'll come in a few chapters.
 
 ## Iterating all the orders
 Our app must show the waiter all orders that need to be picked up. 
@@ -61,10 +61,13 @@ Now you've got all the orders in a signal called this.orders. We just have to it
 On the home view, we want the user to see a different view depending on whether they're logged in or logged out.
 
 If they're logged in:
+
 ![Welcome Lee!](../assets/WelcomeLee.png)
+
 And if they're logged out:
-![You are not logged in](../assets/NotLoggedIn.png
-)
+
+![You are not logged in](../assets/NotLoggedIn.png)
+
 How do we know? Well, if they're logged in, the `user` signal from the AuthService will have something in it. If not, it will be undefined.
 
 1. Inject the AuthService into `home.component.ts` so the user signal can be seen. Then create a property in the component that can be bound in the template.
@@ -81,13 +84,23 @@ export class HomeComponent {
 <h1>{{restaurantName}}</h1>
 <h2>Server's site</h2>
 
+<p *ngIf="user()">Welcome, {{ user().first }}!</p>
+```
+
+3. View your app in a browser. At first, the `<p>` will not appear. Then choose "Log in" from the menu and hit the log in button. Now the home component will greet you by name.
+
+5. Let's provide the alternative. If the user is NOT logged in, we'll tell them. Add a `<ng-template>` and use the `else` clause to point to it:
+```html
+<h1>{{restaurantName}}</h1>
+<h2>Server's site</h2>
+
 <p *ngIf="user() ; else noUser">Welcome, {{ user().first }}!</p>
 <ng-template #noUser>
   <p>You are not logged in. Click <a [routerLink]="'/login'">here</a> to log in.</p>
 </ng-template>
 ```
 
-3. View your app in a browser. At first, it should say you're not logged in. Then choose "Log in" from the menu and hit the log in button. Now the home component will greet you by name.
+6. View your app again. Does it switch as expected?
 
 ## Conditionally showing buttons
 We have to allow the server to update an order's status. It would be smart to only show the server the options that are logical. So based on the current status, we want to show only the appropriate buttons.
@@ -107,12 +120,16 @@ setStatus(status: string) {
 </div>
 ```
 
-3. Add an `*ngIf` attribute to make that set of buttons conditional:
+3. Look at it in the browser. Any order will have these two buttons.
+
+4. Add an `*ngIf` attribute to make that set of buttons conditional:
 ```html
 <div *ngIf="order().status === 'readyForGuest'" class="status-changing">
 ```
 
-You've just said that if the order signal's status is 'readyForGuest', make the `<div>` appear. If not, show nothing. We should do this for four sets of buttons:
+5. Again, view in a browser. Navigating to an order that is `readyForGuest` will have the buttons. If not, no buttons appear.
+
+We should do this for four sets of buttons:
 
 | When the order is ... | It can go to ... | or it can go to ... |
 | --------------------- | ---------------- | ------------------- |
@@ -121,9 +138,10 @@ You've just said that if the order signal's status is 'readyForGuest', make the 
 | delivered             | problem          |                     |
 | problem               | delivered        | complete            |
 
-4. Now you write the code to handle the other three sets. If you need help here's the solution:
+1. Now you write the code to handle the other three sets. If you need help here's the solution:
 <details>
 <summary>Expand for a possible solution</summary>
+
 ```html
 <div *ngIf="order().status === 'readyForGuest'" class="status-changing">
   <button (click)="setStatus('pickedUp')">Picked up</button>
@@ -143,4 +161,4 @@ You've just said that if the order signal's status is 'readyForGuest', make the 
 ```
 </details>
 
-5. Run your app. Navigate to an order and look at its status. Do the buttons make sense? Click one. Because we're changing a signal, the page should update immediately -- as soon as the signal changes. Give it a try. The status will change and the buttons will change.
+1. Run your app. Navigate to an order and look at its status. Do the buttons make sense? Click one. Because we're changing a signal, the page should update immediately -- as soon as the signal changes. Give it a try. The status will change and the buttons will change.

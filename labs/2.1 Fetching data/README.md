@@ -9,7 +9,7 @@ Finally! It's time to begin reading data from a database and an API data server.
 If it tells you it is running on port 3008, you've got it right. You can validate that it is working by visiting [http://localhost:3008/menuItems](http://localhost:3008/menuItems). If you see JSON data, it is working.
 
 ## Preparing for any fetches
-1. When doing any fetching in Angular via HTTP, we need to imports the HttpClientModule. Open app.module.ts and `import { HttpClientModule } from '@angular/common/http';` at the top. 
+1. When doing any fetching in Angular via HTTP, we need to imports the HttpClientModule. Open `app.module.ts` and `import { HttpClientModule } from '@angular/common/http';` at the top. 
 
 2. Then put it in the imports array:
 ```typescript
@@ -24,7 +24,7 @@ imports: [
 ## Fetching an order
 Now let's read an actual order from the API server!
 
-1. Edit order.component.ts. Add this to the top:
+1. Edit `order.component.ts`. Add this to the top:
 ```typescript
 import { HttpClient } from '@angular/common/http';
 ```
@@ -37,7 +37,7 @@ constructor(
 ) { }
 ```
 
-3. In the constructor or preferably in a method called ngOnInit, fetch the data.
+3. In the constructor or preferably in a method called `ngOnInit`, fetch the data.
 ```typescript
 ngOnInit(): void {
   const orderId = this._activatedRoute.snapshot.params['orderId'];

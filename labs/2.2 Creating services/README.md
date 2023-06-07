@@ -1,14 +1,14 @@
 
 # Creating services
 <!-- Time: YYmin -->
-Our order-reading code is clearly working right now but best practice would say that we should move that into a service for a couple of reasons. First, it complicates our component, making it rigid. Second, we may want to share that logic in other components. Let's fix that. We'll move it into a service.
+In the last lab we got our order-reading code is working. But reading Ajax data should happen in a service, not a component. Components should [focus](https://en.wikipedia.org/wiki/Single-responsibility_principle) on presenting data to a user, not reading it. This complicates our component, making it rigid. Second, we may want to share that logic in other components. Let's fix that. We'll move it into a service.
 
 ## Generating Services
 1. Get to a command prompt/terminal window. Execute this command:
 ```bash
 ng generate service Orders
 ```
-This will create orders.service.ts. Take a look at that file. Pretty simple, huh?
+This will create `orders.service.ts`. Take a look at that file. Pretty simple, huh?
 
 2. While we're here, let's create the two other services we'll need.
 ```bash
@@ -35,7 +35,7 @@ getOrder(orderId: number) {
 }
 ```
 
-3. Inject the service into orders.component.ts. You can remove the HttpClient if you like.
+3. Inject the service into `orders.component.ts`. You can remove the HttpClient if you like.
 ```typescript
 constructor(
   private _ordersService: OrdersService,  //  <-- Add this

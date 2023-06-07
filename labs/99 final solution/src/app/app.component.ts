@@ -8,11 +8,7 @@ import { AuthService } from './auth.service';
 })
 export class AppComponent {
   today: Date = new Date();
-  user: any;
+  user = this._authSvc.user;  // Set our user to the service's user signal
 
   constructor(private _authSvc: AuthService) { }
-
-  ngOnInit() {
-    this.user = this._authSvc.user;  // Set our user to the service's user signal
-  }
 }
