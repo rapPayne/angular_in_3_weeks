@@ -1,0 +1,60 @@
+:root {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  --dark1: #202124;
+  /* a black color */
+  --dark2: #1a73e8;
+  /* a blue color */
+  --dark-danger: #B00020;
+  /* a red color */
+  --dark-success: #005500;
+  /* a dark green color */
+  --light1: #ffffff;
+  /* a white color */
+  --light2: #fbbc04;
+  /* a yellow color */
+  --light-danger: #FFCDD2;
+  /* a pink color */
+  --light-success: #c0ff00;
+  /* a light green color */
+
+  color: var(--dark1);
+  background-color: var(--light1);
+}
+
+.danger {
+  color: var(--dark-danger);
+  background-color: var(--light-danger);
+}
+
+.success {
+  color: var(--dark-success);
+  background-color: var(--light-success);
+}
+
+.alert {
+  padding: 15px;
+  border: 2px solid var(--dark1);
+  border-radius: 10px;
+}
+
+label {
+  display: block;
+}
+
+input,
+select {
+  width: calc(100% - 10px);
+  font-size: 1.1em;
+  outline: none;
+  padding: 5px;
+}
+
+button {
+  padding: 10px;
+  color: var(--dark2);
+  background-color: var(--light2);
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+}
