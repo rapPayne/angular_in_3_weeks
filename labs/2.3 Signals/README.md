@@ -1,6 +1,6 @@
 
 # Signals
-<!-- Time: YYmin -->
+<!-- Time: 20min -->
 
 ## Refactoring the order observable to a signal
 Our order observable has a problem; a memory leak. We've forgotten to unsubscribe! We could  unsubscribe OR we could convert it to a signal.

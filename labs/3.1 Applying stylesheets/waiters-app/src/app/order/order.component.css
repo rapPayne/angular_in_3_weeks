@@ -1,0 +1,18 @@
+.status-changing {
+  padding: 5px;
+
+  & button {
+    margin: 10px;
+  }
+}
+
+.money {
+  text-align: right;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.total {
+  border-top: 3px solid;
+  font-size: xx-large;
+}
