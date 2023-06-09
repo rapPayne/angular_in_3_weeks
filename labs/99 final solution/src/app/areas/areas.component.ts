@@ -7,13 +7,9 @@ import { AreaService } from '../area.service';
   styleUrls: ['./areas.component.css']
 })
 export class AreasComponent {
+  area = this._areaService.area;  // <-- Add this
   areas: Array<string> = [
     "Theater 1", "Theater 2", "Theater 3", "Theater 4", "Theater 5", "Theater 6",
   ];
-  area: string | undefined;
-  constructor(public _areaService: AreaService) { }
-  ngOnInit() {
-    this.area = this._areaService.area();
-  }
-
+  constructor(public _areaService: AreaService) { }  // <-- Add this
 }
