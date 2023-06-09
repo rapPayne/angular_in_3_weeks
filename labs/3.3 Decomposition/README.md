@@ -29,9 +29,9 @@ npm start
 2. Edit menu-item.component.html. Replace its contents with this:
 ```html
 <div>
-  <p class="firstName">For {{item.firstName}}</p>
-  <p class="price">{{item.price | currency }}</p>
-  <p class="name">{{item.name}}</p>
+  <p class="firstName">For {{ item.firstName }}</p>
+  <p class="price">{{ item.price }}</p>
+  <p class="name">{{ item.name }}</p>
   <img [src]="item.imageUrl" alt="" class="imageUrl" />
   <p *ngIf="item.notes" class="notes">Notes: {{ item.notes }}</p>
 </div>
