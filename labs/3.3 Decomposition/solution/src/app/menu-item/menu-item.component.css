@@ -1,0 +1,39 @@
+div {
+  border: 1px solid var(--dark2);
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr;
+  grid-template-areas:
+    'firstName firstName firstName'
+    'imageUrl name price'
+    'imageUrl notes notes'
+  ;
+  grid-column-gap: 20px;
+
+  &>* {
+    margin: 10px;
+  }
+
+  &>.firstName {
+    grid-area: firstName;
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+  &>.imageUrl {
+    grid-area: imageUrl;
+    width: 100%;
+  }
+
+  &>.name {
+    grid-area: name;
+  }
+
+  &>.price {
+    grid-area: price;
+    text-align: right;
+  }
+
+  &>.notes {
+    grid-area: notes;
+  }
+}
