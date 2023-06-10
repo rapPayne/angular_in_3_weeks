@@ -1,0 +1,35 @@
+<h2>Order {{ order().id }}</h2>
+
+<p>Area: {{ order().area }}</p>
+<p>Location: {{ order().location }}</p>
+<p>Status: {{ order().status | orderStatus }}</p>
+
+<div *ngIf="order().status === 'readyForGuest'" class="status-changing">
+  <button (click)="setStatus('pickedUp')">Picked up</button>
+  <button (click)="setStatus('problem')">Problem</button>
+</div>
+<div *ngIf="order().status === 'pickedUp'" class="status-changing">
+  <button (click)="setStatus('delivered')">Delivered</button>
+  <button (click)="setStatus('problem')">Problem</button>
+</div>
+<div *ngIf="order().status === 'delivered'" class="status-changing">
+  <button (click)="setStatus('problem')">Problem</button>
+</div>
+<div *ngIf="order().status === 'problem'" class="status-changing">
+  <button (click)="setStatus('delivered')">Delivered</button>
+  <button (click)="setStatus('completed')">Completed</button>
+</div>
+
+<p>Order time: {{ order().orderTime | date:"h:mm a MMMM d" }}</p>
+<p>Pickup time: {{ order().pickupTime | date:"h:mm a MMMM d" }}</p>
+
+<h3>Items</h3>
+<section id="items">
+  <app-menu-item *ngFor="let item of order().items" [item]="item" />
+</section>
+
+<p class="money">Subtotal: {{ getSubtotal(order()) |currency}}</p>
+<p class="money">Tax: {{order().tax |currency}}</p>
+<p class="money">Tip: {{order().tip |currency}}</p>
+<p class="money total">Total: {{ getTotal(order()) |currency}}</p>
+<a [routerLink]="'/orders'">Back to orders</a>

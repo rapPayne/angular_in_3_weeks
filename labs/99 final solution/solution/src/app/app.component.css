@@ -1,0 +1,20 @@
+nav {
+  background-color: var(--dark2);
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  & a,
+  span {
+    color: var(--light2);
+    padding: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+}
+
+main {
+  padding-top: 30px;
+}

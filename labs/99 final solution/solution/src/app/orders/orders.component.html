@@ -1,0 +1,19 @@
+<h1>Orders</h1>
+<p *ngIf="area() ; else noArea">Your area is {{ area() }}</p>
+<ng-template #noArea>
+  <p>You are not assigned to an area. Click <a [routerLink]="'/areas'">here</a> to claim one.</p>
+</ng-template>
+
+<h1>My orders</h1>
+<div *ngFor="let order of myOrders()" [routerLink]="'/orders/'+order.id" [class]="getCssClass(order)">
+  id: {{order.id}}
+  area: {{order.area}}
+  status: {{order.status}}
+</div>
+
+<h1>Other orders</h1>
+<div *ngFor="let order of otherOrders()" [routerLink]="'/orders/'+order.id" [class]="getCssClass(order)">
+  id: {{order.id}}
+  area: {{order.area}}
+  status: {{order.status}}
+</div>
