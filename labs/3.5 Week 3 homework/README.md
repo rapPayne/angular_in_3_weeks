@@ -64,23 +64,14 @@ export class LogoutComponent {
 ## Splitting the order list into 'mine' and 'not mine'
 The orders view is working okay. But using it isn't easy. Each waiter sees all the orders and they have to search through the list for the orders in their area. We have an orders signal with all the orders and an area signal with the waiter's current area. Let's show them their orders at the top and everyone else's at the bottom.
 
-1. Inject the area service into orders.component.ts:
-```typescript
-constructor(
-  private _ordersService: OrdersService,
-  private _areaService: AreaService,  // <-- Inject the Area service
-) { }
-```
-
 1. Add these to areas.component.ts:
 ```typescript
-  area!: Signal<string>;
   myOrders: Signal<any[]> = computed(() => this.orders()!.filter(order => order.area === this.area()));
   otherOrders: Signal<any[]> = computed(() => this.orders()!.filter(order => order.area !== this.area()));
 ```
 Remember, a `computed` returns a new signal that watches an earlier one. Now you've got two lists of orders; one for your server's current area and one for everyone else's. Let's iterate through them.
 
-1. Find where it says this:
+2. Find where it says this:
 ```html
 <div *ngFor="let order of orders()" [routerLink]="'/orders/'+order.id">
   id: {{order.id}}
@@ -110,14 +101,10 @@ And split that one list into two, one for `myOrders` and another for `otherOrder
 </details>
 
 
-
-
-
-
-
 ## Refreshing the orders automatically
-This app reads from a centralized database through an API server. There may be many different waiters using the app simultaneously. A waiter may see an order that is ready to be picked up but by the time they get there, another waiter may have picked it up. Oh sure, they could just hit the refresh button (F5) every so often. But how great would it be if we could tell our OrdersService to update itself automatically every 30 seconds or every 5 seconds?
+This app reads from a centralized database through an API server. There may be many different waiters using the app simultaneously. A waiter may see an order that is ready to be picked up but by the time they get there, another waiter may have picked it up. Oh sure, they could just hit the refresh button (F5) every so often. But how great would it be if we could tell our OrdersService to update itself automatically every 30 seconds or every 10 seconds?
 
 We'll probably want to change only the `orders.service.ts` file. We'll want to use a `setInterval`. And we'll merely set the signal. Because it is a signal, the component that is watching that signal will re-render itself as soon as the signal changes.
 
-This one is a challenge. See if you can make it happen without any direction. Please connect with Rap if you're able to figure it out. I'd love to see your solution!
+This one is a challenge with no instructions. See if you can make it happen without any direction. Please connect with Rap if you're able to figure it out. I'd love to see your solution!
+
