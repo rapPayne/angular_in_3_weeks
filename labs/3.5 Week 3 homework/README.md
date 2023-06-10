@@ -1,32 +1,49 @@
 
-## Bonus! Setting colors on the orders
-Look at your list of orders. They all look the sam
-Change your order line from this:
-<CODE HERE>
-to this:
-<CODE HERE with the [class]="getCssClass(order)" added>
+# Week 3 homework
+Here are some further exercises for you to reinforce the Angular concepts after the class. If you need help with them, reach out to your instructor.
 
-Add this to your orders.component.ts class:
+## Letting the user log out
+We've allowed the user to log in but not to log out. Let's fix that. We know they're logged in when AuthService's `user` property is not undefined. So to log out will be simple.
+
+1. Edit `logout.component.ts`. Import and inject the AuthService. In `ngOnInit`, call the AuthService's `logout()` method.
+<details>
+<summary>Expand for a possible solution</summary>
+
 ```typescript
-getCssClass(order: any) {
-  if (order.status === 'readyForGuest') return 'success';
-  if (order.status === 'problem') return 'danger';
-  return '';
+export class LogoutComponent {
+  constructor(
+    private _authService: AuthService) { }
+
+  ngOnInit() {
+    this._authService.logout();
+  };
 }
 ```
+</details>
 
-Note: There's a better way to do this using an [ngClass] directive. You can research that [here](https://angular.io/api/common/NgClass).
+2. While we're at it, we should also clear out the area. Inject the AreaService and set it's `area` property to `""` (the empty string).
 
-Bonus!! Move the fetch out of the button click and put it in a setInterval so taht it fetches every 30 seconds or so.
-<CODE HERE>
+<details>
+<summary>Expand for a possible solution</summary>
 
-In the orders.service.ts
-expose a signal that setInterval reads the orders every 30,000 ms. Do we need a computed()? Or just a signal? Just a signal called orders. Then every 30 seconds we go orders.set(theOrders)\
-In orders, call _ordersSvc.orders() to expose the orders. (I hope that's how it works)
+```typescript
+export class LogoutComponent {
+  constructor(
+    private _authService: AuthService,
+    private _areaService: AreaService) { }
 
-RAP - GOTTA DO SOMETHING WITH A SIGNAL, LIKE WHEN A VALUE CHANGES, SOMETHING ELSE IS RUN VIA compute(). MAYBE THE NUMBER OF ORDERS? MAYBE THE LIST OF ORDERS? MAYBE CREATE A setInterval that hits the orders endpoint every 30 seconds?
+  ngOnInit() {
+    this._authService.logout();
+    this._areaService.area.set("");
+  };
+}
+```
+</details>
 
-# Letting the user log out
+3. And lastly, let's forward them to the `/login` route to let them know it was successful and that they can log in as a different user if they like.
+<details>
+<summary>Expand for a possible solution</summary>
+
 ```typescript
 export class LogoutComponent {
   constructor(
@@ -41,20 +58,13 @@ export class LogoutComponent {
   };
 }
 ```
-
-Challenge: Make the orders list look better. Extract each line into an OrderLine component.
-
+</details>
 
 
+## Splitting the order list into 'mine' and 'not mine'
+The orders view is working okay. But using it isn't easy. Each waiter sees all the orders and they have to search through the list for the orders in their area. We have an orders signal with all the orders and an area signal with the waiter's current area. Let's show them their orders at the top and everyone else's at the bottom.
 
-
-## Bonus!! Using the area service
-If you've got extra time, try to take on this challenge.
-
-The orders view is working okay. But using 
-Now that you've got a service and an areas signal, let's use it in Orders component.
-
-Inject the area service into orders.component.ts:
+1. Inject the area service into orders.component.ts:
 ```typescript
 constructor(
   private _ordersService: OrdersService,
@@ -62,16 +72,15 @@ constructor(
 ) { }
 ```
 
-
-Add these to areas.component.ts:
+1. Add these to areas.component.ts:
 ```typescript
   area!: Signal<string>;
   myOrders: Signal<any[]> = computed(() => this.orders()!.filter(order => order.area === this.area()));
   otherOrders: Signal<any[]> = computed(() => this.orders()!.filter(order => order.area !== this.area()));
 ```
-Now you've got two lists of orders; one for your server's current area and one for everyone else's. Let's iterate through them.
+Remember, a `computed` returns a new signal that watches an earlier one. Now you've got two lists of orders; one for your server's current area and one for everyone else's. Let's iterate through them.
 
-Find where it says this:
+1. Find where it says this:
 ```html
 <div *ngFor="let order of orders()" [routerLink]="'/orders/'+order.id">
   id: {{order.id}}
@@ -79,7 +88,10 @@ Find where it says this:
   status: {{order.status}}
 </div>
 ```
-And replace it with this
+And split that one list into two, one for `myOrders` and another for `otherOrders`. Let's see if you can figure it out on your own but if you need some help, peek at the solution below.
+<details>
+<summary>Expand for a possible solution</summary>
+
 ```html
 <h1>My orders</h1>
 <div *ngFor="let order of myOrders()" [routerLink]="'/orders/'+order.id" [class]="getCssClass(order)">
@@ -95,13 +107,17 @@ And replace it with this
   status: {{order.status}}
 </div>
 ```
+</details>
 
 
 
 
 
-Bonus??? For password, use a signal to make sure it conforms to some password validation RegEx. 
 
 
+## Refreshing the orders automatically
+This app reads from a centralized database through an API server. There may be many different waiters using the app simultaneously. A waiter may see an order that is ready to be picked up but by the time they get there, another waiter may have picked it up. Oh sure, they could just hit the refresh button (F5) every so often. But how great would it be if we could tell our OrdersService to update itself automatically every 30 seconds or every 5 seconds?
 
+We'll probably want to change only the `orders.service.ts` file. We'll want to use a `setInterval`. And we'll merely set the signal. Because it is a signal, the component that is watching that signal will re-render itself as soon as the signal changes.
 
+This one is a challenge. See if you can make it happen without any direction. Please connect with Rap if you're able to figure it out. I'd love to see your solution!
