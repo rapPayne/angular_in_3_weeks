@@ -6,12 +6,9 @@
 - git
 - node 18.11 or better
 
-2. Get this whole repository and sub-repositories
+2. Get this whole repository and sub-repositories. (Note the --recurse-submodules flag. It's important)
 ```bash
-git clone git@github.com:rapPayne/angular_in_3_weeks.git
-cd angular_in_3_weeks
-git submodule init
-git submodule update
+git clone --recurse-submodule git@github.com:rapPayne/react_in_3_weeks.git
 ```
 
 ## Setting up Express data server
@@ -23,13 +20,15 @@ npm run start
 ```
 You should see a message that the RESTful API data server is running on port 3008. 
 
-** Leave this server running at all times **
+== Leave this server running at all times ==
 
 2. Open any browser and browse to http://localhost:3008/menuitems
+
 3. If you see JSON data, your server is running.
 
 ## Creating your Angular app
 1. Open a new command prompt/terminal window. Change directory to any directory you like *except* inside the server folder. Literally anywhere else will do.
+
 2. Create the app by running this from a command prompt
 ```bash
 ng new waiters-app
@@ -89,7 +88,7 @@ You should see your out-of-the box Angular application running!
   <h1>YOUR REAL CONTENT WILL GO HERE</h1>
 </main>
 <footer>
-  <p>Copyright &copy; 2005 Dinner and a Movie</p>
+  <p>Copyright &copy; 2025 Dinner and a Movie</p>
 </footer>
 ```
 The moment you hit 'save' in your IDE, the terminal window will recompile, the browser will refresh and you'll see your new content! Now, how cool is that?
