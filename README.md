@@ -4,9 +4,6 @@ Resources to support @RapPayne's O'Reilly course.
 
 In this course we'll learn together to create a simple Angular application.
 
-## Agenda
-Here's what we'll be doing together: [The Agenda](Agenda.md)
-
 ## Labs
 We'll be creating a small application for the wait staff (servers) at a  restaurant. When the servers show up for work, they will log on to our app and pick an area. The app will then begin assigning them meals that are ready to be delivered to guests in their area. They will mark the meal like so:
 

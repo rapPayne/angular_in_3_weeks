@@ -44,7 +44,7 @@ Now we just need to show it to the user.
 
 (While testing, please note that you can't see this change at runtime yet because we're not finished wiring up the AreasComponent. But you can simulate it by hardcoding a starting value in `areas.service.ts`. Just put any string in the signal's default value.)
 
-1. Now make that paragraph appear only if the `area` signal has something in it. (Hint: Use *ngIf.)
+3. Now make that paragraph appear only if the `area` signal has something in it. (Hint: Use *ngIf.)
 <details>
 <summary>Expand for a possible solution</summary>
 
@@ -72,7 +72,9 @@ Take a look at the navigation menu at the top of your app. Some of those options
 All you're going to do is edit `app.component.html` and add `*ngIf` conditions to each of the `<a [routerLink]="whatever">` tags.
 
 1. If the user is logged in, show "Orders", "Areas", "Logout", and the greeting `<span>` that says hello to the user. (Hint: The `user` signal will have something in it.)
+
 2. If the user is NOT logged in, show "Login". (Hint: The `user` signal will be undefined.)
+
 3. Note that the "Main" option should show no matter what. Make sure there's no condition on it appearing.
 
 <details>
@@ -116,7 +118,9 @@ Our current login process "authenticates" the user when they hit the login butto
 You're probably thinking "I'll put something behind the login button's click event." But there's a more reactive way. Add a signal [effect](https://angular.io/guide/signals#effects) to the LoginComponent that says when the `user` signal changes, we navigate to the `'/'` route.
 
 1. Edit `login.component.ts` and find the constructor.
+
 2. Inject a `Router` service. (Hint: you'll have to `import { Router } from '@angular/router'`).
+
 3. Also in the constructor add a signal **effect**. It should check `this._authService.user()` and if it is truthy, navigate home.
 
 See if you can figure this out yourself without peeking, but in case you need a little help, look here:
