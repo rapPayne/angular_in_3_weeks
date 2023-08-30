@@ -20,7 +20,7 @@ npm run start
 ```
 You should see a message that the RESTful API data server is running on port 3008. 
 
-== Leave this server running at all times ==
+___Leave this server running at all times___
 
 2. Open any browser and browse to http://localhost:3008/menuitems
 
@@ -88,7 +88,7 @@ You should see your out-of-the box Angular application running!
   <h1>YOUR REAL CONTENT WILL GO HERE</h1>
 </main>
 <footer>
-  <p>Copyright &copy; 2025 Dinner and a Movie</p>
+  <p>Copyright &copy; 1995 Dinner and a Movie</p>
 </footer>
 ```
 The moment you hit 'save' in your IDE, the terminal window will recompile, the browser will refresh and you'll see your new content! Now, how cool is that?

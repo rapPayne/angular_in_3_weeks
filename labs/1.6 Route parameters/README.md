@@ -1,6 +1,6 @@
   
 # Route parameters
-<!-- Time: YYmin -->
+<!-- Time: 10min -->
 
 Remember that we created a route (/orders/:id) with a route parameter. Let's enable the OrderComponent to read that route parameter. This way, if the user browses to /orders/1337, they'll see the details for order number 1337 and if they browse to /order/42, they'll see the details for order 42.
 
@@ -36,6 +36,7 @@ constructor(private _activatedRoute: ActivatedRoute) {
 This last step is optional. It's a good practice to keep your constructor small. Angular components have a lifecycle method called `ngOnInit` which is run immediately after the constructor.
 
 1. Create a new method called ngOnInit.
+
 2. Move all the logic out of the constructor and into this new method:
 ```typescript
 export class OrderComponent {

@@ -4,7 +4,7 @@
 
 Let's create all the components your web app will need. Get out to a command prompt/terminal window so you can run the ng command. 
 
-1. Generate the landing "page" (It's really not a page, just a component)
+1. Generate the landing "page" (It's not really a page, just a component)
 ```bash
 ng generate component Home
 ```
@@ -23,7 +23,7 @@ ng generate component Orders
 ```bash
 ng generate component Order
 ```
-So we have an OrderComponent and an OrdersComponent
+So we have an OrderComponent (singular) and an OrdersComponent (plural)
 
 5. Generate all the rest
 ```bash
@@ -43,13 +43,17 @@ Now let's view one or two in the browser.
 ```html
 <h1>YOUR REAL CONTENT WILL GO HERE</h1>
 ```
+
 2. And change it to say this
 ```html
 <app-home />
 ```
+
 3. View your site in a browser. Notice that it says "Home works"
+
 4. Edit app.component.html once again. Now make it say this
 ```html
 <app-areas />
 ```
+
 5. View again. See how it changed?

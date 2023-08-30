@@ -1,5 +1,5 @@
 # Router intro
-<!-- Time: YYmin -->
+<!-- Time: 10min -->
 In this lab we'll set up client-side routing with Angular router.
 
 ## Create the routing 

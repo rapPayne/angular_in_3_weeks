@@ -34,9 +34,12 @@ See if you can write it yourself. But if you need help, here's a possible soluti
 <summary>Expand for a possible solution</summary>
 
 ```typescript
-getSubtotal(order: any) {
-  return order?.items?.reduce((acc: number, item: any) =>
-    acc + item.price, 0);
+getSubtotal(order: any): number {
+  let total = 0;
+  for (let item of order.items) {
+    total += item.price;
+  }
+  return total;
 }
 ```
 </details>
@@ -47,7 +50,7 @@ And here's another functional programming way of doing it.
 <summary>Expand for a very concise solution</summary>
 
 ```typescript
-getSubtotal(order: any) {
+getSubtotal(order: any): number {
   return order?.items?.reduce((acc: number, item: any) =>
     acc + item.price, 0);
 }
@@ -79,10 +82,10 @@ Now let's interpolate these functions on our HTML template.
 <p>Order time: {{ order?.orderTime }}</p>
 <p>Pickup time: {{ order?.pickupTime }}</p>
 
-<p class="money">Subtotal: {{ getSubtotal(order)  }}</p>
+<p class="money">Subtotal: {{ getSubtotal(order)  }}</p>  <!-- Add this line -->
 <p class="money">Tax: {{order?.tax }}</p>
 <p class="money">Tip: {{order?.tip }}</p>
-<p class="money total">Total: {{ getTotal(order) }}</p>
+<p class="money total">Total: {{ getTotal(order) }}</p>   <!-- Add this line -->
 <a [routerLink]="'/orders'">Back to orders</a>
 ```
 </details>

@@ -1,6 +1,6 @@
 
 # One-way binding
-<!-- Time: YYmin -->
+<!-- Time: 15min -->
 
 ## Setting the year in the footer
 Did you notice how badly out of date the year is in the footer? You'll have to change that every December 31 at midnight unless you allow Angular to change it automatically.
@@ -33,7 +33,7 @@ Let's say that we want our app to greet the user by name. In the page header, le
 
 2. Then in `app.component.ts`, add this:
 ```typescript
-user: any = {first: "Jo" }
+user: any = { first: "Jo" }
 ```
 
 3. View it in the browser. Try putting your name in `app.component.ts` instead of "Jo". See how it uses that variable instead?
@@ -41,7 +41,7 @@ user: any = {first: "Jo" }
 ## Displaying a whole object
 Let's tackle a big one. In the OrdersComponent, we're going to display an entire order. 
 
-1. Edit `order.component.ts`. Make it look like this:
+1. Edit `order.component.ts`. Make the class look like this:
 ```typescript
 export class OrderComponent {
   order: any = {

@@ -1,6 +1,6 @@
 
 # RouterLinks
-<!-- Time: YYmin -->
+<!-- Time: 10min -->
 
 This topic is small but it has a _major_ impact on performance and operation. With routerLinks we avoid round-trips to the server and redundant reloads of your app.
 
@@ -11,7 +11,10 @@ This topic is small but it has a _major_ impact on performance and operation. Wi
 
 2. Now click on any link in the nav bar at the top. Look at how much traffic is in the network tab! That's because all clicks are re-loading the **entire** site!
 
-3. Change your navbar, replacing all the `href`s with `[routerLink]`s.
+3. Change your navbar, replacing all the `href`s with `[routerLink]`s. Do it on your own if possible, but if you need a reminder, look here:
+<details>
+<summary>Expand for a possible solution</summary>
+
 ```html
 <nav>
   <a [routerLink]="'/'">Main</a>
@@ -23,6 +26,7 @@ This topic is small but it has a _major_ impact on performance and operation. Wi
 </nav>
 ```
 Note the extra set of single quotes inside the double quotes now. These are needed for Angular's routing.
+</details>
 
 4. Clear out the network tab in the browser again. Navigate around using these routerlinks. Notice -- no trips to the server! We're staying client side.
 
