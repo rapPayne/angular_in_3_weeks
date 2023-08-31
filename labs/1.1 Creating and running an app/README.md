@@ -10,6 +10,7 @@
 ```bash
 git clone --recurse-submodule git@github.com:rapPayne/react_in_3_weeks.git
 ```
+[What if that submodule thing doesn't work?](#what-if-that-submodule-thing-doesnt-work)
 
 ## Setting up Express data server
 1. Open a command prompt/terminal window. cd to the [server](../../server) folder and run this.
@@ -94,3 +95,25 @@ You should see your out-of-the box Angular application running!
 The moment you hit 'save' in your IDE, the terminal window will recompile, the browser will refresh and you'll see your new content! Now, how cool is that?
 
 Congrats! You're done.
+
+## What if that submodule thing doesn't work?
+
+Here are a couple of options.
+
+### You could try these commands
+1. From the empty server folder...
+```bash
+git submodule init
+git submodule update
+```
+
+### You can download the server project separately
+1. cd to literally anywhere else.
+1. `git clone git@github.com:rapPayne/daam-server.git`
+1. Then do the server parts in that folder. Namely, 
+```bash
+npm install
+npm run load-db
+npm run start
+```
+

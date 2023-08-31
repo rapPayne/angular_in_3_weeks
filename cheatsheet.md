@@ -1,5 +1,7 @@
 # Angular cheatsheet
 
+
+
 ## JavaScript things
 
 ## HTML things
@@ -119,7 +121,14 @@
 - `column` - Displays flex items vertically in a column.
 - `column-reverse` - Displays flex items vertically in a reverse order.
 
+## Git things
 
+### To download and install git
+- For Windows: https://git-scm.com/download/win
+- For Mac: brew install git
+- For Linux: sudo apt install git
+- For Linux: sudo dnf install git
+- For Linux: sudo yum install git
 
 
 ## Browser things
