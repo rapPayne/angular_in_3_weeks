@@ -1,6 +1,6 @@
 import { Component, effect } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +15,6 @@ export class LoginComponent {
   }
 
   login() {
-    this._authService.login("server2", "pass");  // Hardcode the values for now
+    this._authService.login("server2", "pass");  // Hardcode the credentials for now
   }
 }

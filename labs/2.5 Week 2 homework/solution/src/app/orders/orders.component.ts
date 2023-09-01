@@ -1,13 +1,14 @@
 import { Component, Signal, signal } from '@angular/core';
 import { OrdersService } from '../orders.service';
 import { AreaService } from '../area.service';
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent {
-  orders: Signal<any[]> = this._ordersService.currentOrders;
+  orders: Signal<any[]> = signal([]);
   area: Signal<string> = this._areaService.area; // <-- Add the area signal
 
   constructor(
