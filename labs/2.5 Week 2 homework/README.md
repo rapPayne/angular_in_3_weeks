@@ -33,7 +33,7 @@ Whenever `AreaService.area` changes, our `area` will be notified and will update
 
 Now we just need to show it to the user.
 
-2. Edit `orders.component.html`. Add a `<p>` to the top that tells the user their area. (Hint: You'll want to interpolate `area` inside double-curly braces. Also, don't forget that `area` is a **signal** that contains a string.)
+3. Edit `orders.component.html`. Add a `<p>` to the top that tells the user their area. (Hint: You'll want to interpolate `area` inside double-curly braces. Also, don't forget that `area` is a **signal** that contains a string.)
 <details>
 <summary>Expand for a possible solution</summary>
 
@@ -44,7 +44,7 @@ Now we just need to show it to the user.
 
 (While testing, please note that you can't see this change at runtime yet because we're not finished wiring up the AreasComponent. But you can simulate it by hardcoding a starting value in `areas.service.ts`. Just put any string in the signal's default value.)
 
-3. Now make that paragraph appear only if the `area` signal has something in it. (Hint: Use *ngIf.)
+4. Now make that paragraph appear only if the `area` signal has something in it. (Hint: Use *ngIf.)
 <details>
 <summary>Expand for a possible solution</summary>
 
@@ -53,7 +53,7 @@ Now we just need to show it to the user.
 ```
 </details>
 
-4. Lastly, let's put something on the page if there's no area chosen. Tell the waiter to go to `/areas` to choose an area. (Hints: Use an `else` in your *ngIf and create a `ng-template`.)
+5. Lastly, let's put something on the page if there's no area chosen. Tell the waiter to go to `/areas` to choose an area. (Hints: Use an `else` in your *ngIf and create a `ng-template`.)
 <details>
 <summary>Expand for a possible solution</summary>
 

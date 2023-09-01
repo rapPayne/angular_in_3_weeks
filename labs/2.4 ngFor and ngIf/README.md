@@ -5,6 +5,7 @@ Alright, this is where Angular really gets fun! These built-in directives are wh
 
 ## Iterating areas
 We'll start off with a simple one. We want the waiter to choose the area that they'll be serving. Let's load up the data in the TypeScript class and then display it in the HTML.
+
 ![Areas dropdown](../assets/AreasDropdown.png)
 
 1. Add an array of strings to `areas.component.ts`.
@@ -15,6 +16,7 @@ export class AreasComponent {
   ];
 }
 ```
+
 2. Iterate them in `areas.component.html`
 ```html
 <h1>Your area</h1>
@@ -39,7 +41,7 @@ Let's use it!
 2. Make `orders.component.ts` look like this:
 ```typescript
 export class OrdersComponent {
-  orders: Signal<any[]> = = this._ordersService.currentOrders;
+  orders: Signal<any[]> = this._ordersService.currentOrders;
 
   constructor(private _ordersService: OrdersService) { }
 }
@@ -55,6 +57,7 @@ Now you've got all the orders in a signal called this.orders. We just have to it
   status: {{order.status}}
 </div>
 ```
+
 4. Run the app. Look! You've got some orders ready for your waiters! If you click on any of those orders, you'll navigate to the details page for that order. Try it out!
 
 ## Conditionally displaying
@@ -89,7 +92,7 @@ export class HomeComponent {
 
 3. View your app in a browser. At first, the `<p>` will not appear. Then choose "Log in" from the menu and hit the log in button. Now the home component will greet you by name.
 
-5. Let's provide the alternative. If the user is NOT logged in, we'll tell them. Add a `<ng-template>` and use the `else` clause to point to it:
+4. Let's provide the alternative. If the user is NOT logged in, we'll tell them. Add a `<ng-template>` and use the `else` clause to point to it:
 ```html
 <h1>{{restaurantName}}</h1>
 <h2>Server's site</h2>
@@ -100,7 +103,7 @@ export class HomeComponent {
 </ng-template>
 ```
 
-6. View your app again. Does it switch as expected?
+5. View your app again. Does it switch as expected?
 
 ## Conditionally showing buttons
 We have to allow the server to update an order's status. It would be smart to only show the server the options that are logical. So based on the current status, we want to show only the appropriate buttons.
@@ -138,7 +141,7 @@ We should do this for four sets of buttons:
 | delivered             | problem          |                     |
 | problem               | delivered        | complete            |
 
-1. Now you write the code to handle the other three sets. If you need help here's the solution:
+6. Now you write the code to handle the other three sets. If you need help here's the solution:
 <details>
 <summary>Expand for a possible solution</summary>
 
@@ -161,4 +164,4 @@ We should do this for four sets of buttons:
 ```
 </details>
 
-1. Run your app. Navigate to an order and look at its status. Do the buttons make sense? Click one. Because we're changing a signal, the page should update immediately -- as soon as the signal changes. Give it a try. The status will change and the buttons will change.
+7. Run your app. Navigate to an order and look at its status. Do the buttons make sense? Click one. Because we're changing a signal, the page should update immediately -- as soon as the signal changes. Give it a try. The status will change and the buttons will change.

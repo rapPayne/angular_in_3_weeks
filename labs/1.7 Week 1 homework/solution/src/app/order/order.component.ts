@@ -29,17 +29,18 @@ export class OrderComponent {
     }
   }
 
-  // getSubtotal(order: any): number {
-  //   return order?.items?.reduce((acc: number, item: any) =>
-  //     acc + item.price, 0);
-  // }
   getSubtotal(order: any): number {
-    let total = 0;
-    for (let item of order.items) {
-      total += item.price;
-    }
-    return total;
+    return order?.items?.reduce((acc: number, item: any) =>
+      acc + item.price, 0);
   }
+  // getSubtotal(order: any): number {
+  //   if (!order?.items) return 0;
+  //   let total = 0;
+  //   for (let item of order.items) {
+  //     total += item.price;
+  //   }
+  //   return total;
+  // }
 
   getTotal(order: any): number {
     return this.getSubtotal(order) + order?.tax + order?.tip;

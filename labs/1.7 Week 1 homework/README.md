@@ -35,6 +35,7 @@ See if you can write it yourself. But if you need help, here's a possible soluti
 
 ```typescript
 getSubtotal(order: any): number {
+  if (!order?.items) return 0;
   let total = 0;
   for (let item of order.items) {
     total += item.price;

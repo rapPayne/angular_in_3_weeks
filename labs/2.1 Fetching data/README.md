@@ -2,13 +2,17 @@
 # Fetching data
 <!-- Time: YYmin -->
 Finally! It's time to begin reading data from a database and an API data server. Remember that we have one in the [server](../../server/) folder. Also remember from the first lab that you should have that thing running at all times, especially now. Here's how to start it.
+
 1. Open a command prompt/terminal window.
+
 2. `cd` to your server folder.
+
 3. Go `npm run start` in that folder.
 
 If it tells you it is running on port 3008, you've got it right. You can validate that it is working by visiting [http://localhost:3008/menuItems](http://localhost:3008/menuItems). If you see JSON data, it is working.
 
 ## Preparing for any fetches
+
 1. When doing any fetching in Angular via HTTP, we need to imports the HttpClientModule. Open `app.module.ts` and `import { HttpClientModule } from '@angular/common/http';` at the top. 
 
 2. Then put it in the imports array:

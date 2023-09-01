@@ -1,4 +1,3 @@
-
 # Signals
 <!-- Time: 20min -->
 
@@ -49,9 +48,11 @@ export class OrderComponent {
   order: WritableSignal<any> = this._ordersService.currentOrder;  // <-- Change this line
   items: WritableSignal<any> = signal([{}])                       // <-- Add this line
 ```
+Don't forget your imports for WritableSignal and signal.
+
 Notice what is happening. We're tying `order` to the OrderService's currentOrder signal. So all we have to do is tell the OrdersService to set it's currentOrder and our component will be notified when that value is set.
 
-2. Tell the service to update its currentOrder in our `ngOnInit`:
+2. In order.component.ts's `ngOnInit`, tell the service that you want it to update its own currentOrder:
 ```typescript
 ngOnInit(): void {
   const orderId = this._activatedRoute.snapshot.params['orderId'];
@@ -75,6 +76,7 @@ change it to say
 <p>Location: {{ order().location }}</p>
 <p>Status: {{ order().status }}</p>
 ```
+But of course, do all of them.
 
 4. That should do it. Run and browse to as many orders as you like.
 
@@ -89,7 +91,7 @@ change it to say
 6. Run it again and you'll see that every time the orders signal changes, it will console.log() those new orders. This is reactive programming.
 
 ## Setting the user
-Let's do another simple one to solidify the ideas of signals and services. We're going to simulate a login and logout.
+Let's do another simple service with signals. We're going to simulate a login and logout. Your instructions will leave out some detail to make you think more.
 
 1. Edit your `auth.service.ts` service. Make a signal called user that will contain the info for the currently logged-in user.
 ```typescript

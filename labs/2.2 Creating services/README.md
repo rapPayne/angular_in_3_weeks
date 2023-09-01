@@ -45,7 +45,7 @@ constructor(
 
 4. Change ngOnInit to use the service instead. Subscribe here.
 ```typescript
-ngOnInit() {
+ngOnInit(): void {
   const orderId = this._activatedRoute.snapshot.params['orderId'];
   this._ordersService.getOrder(orderId).subscribe({
     next: (data) => { this.order = data; }
@@ -54,3 +54,5 @@ ngOnInit() {
 ```
 
 5. Run your app. Your refactor worked if you can still navigate to different order by order number.
+
+Note: If you ever subscribe to an observable, you should also unsubscribe to avoid memory leaks. We are not doing that here merely because we will soon change how we read. This new method won't require an unsubscribe.
