@@ -1,4 +1,4 @@
-import { Component, Signal, signal } from '@angular/core';
+import { Component, Signal } from '@angular/core';
 import { OrdersService } from '../orders.service';
 
 @Component({

@@ -5,11 +5,11 @@
     <a [routerLink]="'/areas'">Areas</a>
     <a [routerLink]="'/logout'">Logout</a>
     <a [routerLink]="'/login'">Login</a>
-    <span> Hello, {{ user()?.first }}!</span>
+    <span> Hello, {{ user()?.first }}!</span> <!-- Add parentheses b/c it's a signal -->
   </nav>
 </header>
 <main>
-  <router-outlet />
+  <router-outlet /> <!-- Change this line -->
 </main>
 <footer>
   <p>Copyright &copy; {{ today.getFullYear() }} Dinner and a Movie</p>
