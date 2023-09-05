@@ -130,6 +130,13 @@
 - For Linux: sudo dnf install git
 - For Linux: sudo yum install git
 
+### If you get errors about permissions
+It's probably problems with your ssh key. Try this first:
+```bash
+eval "$(ssh-agent -s)"
+ssh-add -l -E sha256
+```
+Here's a link: https://help.github.com/articles/error-permission-denied-publickey
 
 ## Browser things
 
