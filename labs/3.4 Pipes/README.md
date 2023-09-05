@@ -69,7 +69,7 @@ export class OrderStatusPipe implements PipeTransform {
 
 3. Use it in `order.component.html` when we're displaying the order status:
 ```html
-<p>Status: {{ order().status | orderStatus }}</p>
+Status: {{ order.status | orderStatus }}
 ```
 
 4. Run your app and look at some orders. Nice, right?

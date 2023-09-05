@@ -39,7 +39,7 @@ user: any = { first: "Jo" }
 3. View it in the browser. Try putting your name in `app.component.ts` instead of "Jo". See how it uses that variable instead?
 
 ## Displaying a whole object
-Let's tackle a big one. In the OrdersComponent, we're going to display an entire order. 
+Let's tackle a big one. In the OrderComponent, we're going to display an entire order. 
 
 1. Edit `order.component.ts`. Make the class look like this:
 ```typescript

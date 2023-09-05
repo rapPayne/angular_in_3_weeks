@@ -68,21 +68,19 @@ login() {
 
 3. Using ngModel, bind them to the username and password input boxes:
 ```html
-<div>
-  <h1>Login</h1>
-  <form (ngSubmit)="login()">
-    <div>
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" [(ngModel)]="username" />
-    </div>
-    <div>
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" [(ngModel)]="password" />
-    </div>
-    <button type="submit">Login</button>
-  </form>
-  <div *ngIf="error()" class="danger alert">{{error()}}</div>
-</div>
+<h1>Login</h1>
+<form (ngSubmit)="login()">
+  <div>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" [(ngModel)]="username" />
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" [(ngModel)]="password" />
+  </div>
+  <button type="submit">Login</button>
+</form>
+<div *ngIf="error()" class="danger alert">{{error()}}</div>
 ```
 
 4. Try to login with bad credentials. Do you see an error message?

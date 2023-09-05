@@ -66,8 +66,8 @@ The orders view is working okay. But using it isn't easy. Each waiter sees all t
 
 1. Add these to areas.component.ts:
 ```typescript
-  myOrders: Signal<any[]> = computed(() => this.orders()!.filter(order => order.area === this.area()));
-  otherOrders: Signal<any[]> = computed(() => this.orders()!.filter(order => order.area !== this.area()));
+  myOrders: Signal<any[]> = computed(() => this.orders()?.filter(order => order.area === this.area()));
+  otherOrders: Signal<any[]> = computed(() => this.orders()?.filter(order => order.area !== this.area()));
 ```
 Remember, a `computed` returns a new signal that watches an earlier one. Now you've got two lists of orders; one for your server's current area and one for everyone else's. Let's iterate through them.
 
@@ -108,3 +108,4 @@ We'll probably want to change only the `orders.service.ts` file. We'll want to u
 
 This one is a challenge with no instructions. See if you can make it happen without any direction. Please connect with Rap if you're able to figure it out. I'd love to see your solution!
 
+Some hints, though. Services do not have lifecycle methods, but components do, so maybe create a method in OrdersService to clearInterval() and call it from the OrdersComponent's onDestroy() lifecycle method.

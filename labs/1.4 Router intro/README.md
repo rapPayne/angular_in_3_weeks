@@ -63,7 +63,7 @@ And with that, you're ready to navigate around!
 | [/](http://localhost:4200/)                        | The "home" component               |
 | [/areas](http://localhost:4200/areas)              | AreasComponent                     |
 | [/orders](http://localhost:4200/orders)            | OrdersComponent                    |
-| [/order/12345](http://localhost:4200/orders/12345) | The details for order number 12345 |
+| [/orders/12345](http://localhost:4200/orders/12345) | The details for order number 12345 |
 | [/login](http://localhost:4200/login)              | LoginComponent                     |
 | [/logout](http://localhost:4200/logout)            | LogoutComponent                    |
 | Literally anything other URL                       | NotFoundComponent                  |

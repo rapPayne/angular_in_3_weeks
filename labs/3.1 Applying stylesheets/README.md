@@ -137,7 +137,6 @@ getCssClass(order: any) {
 
 3. Now use that function in `orders.component.html` when drawing each order in the list:
 ```html
-<h1>All orders</h1>
 <div *ngFor="let order of orders()" [routerLink]="'/orders/'+order.id" [class]="getCssClass(order)">
   id: {{order.id}}
   area: {{order.area}}
