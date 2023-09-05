@@ -8,7 +8,7 @@ import { AreaService } from '../area.service';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent {
-  orders: Signal<any[]> = signal([]);
+  orders: Signal<any[]> = this._ordersService.currentOrders;
   area: Signal<string> = this._areaService.area; // <-- Add the area signal
 
   constructor(
