@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { AreaService } from '../area.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logout',
@@ -17,7 +17,6 @@ export class LogoutComponent {
   ngOnInit() {
     this._authService.logout();
     this._areaService.area.set("");
-    console.log("area set to empty")
     this._router.navigate(['/login']);
-  }
+  };
 }

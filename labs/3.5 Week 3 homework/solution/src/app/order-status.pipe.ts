@@ -17,4 +17,3 @@ export class OrderStatusPipe implements PipeTransform {
     return this.translations[value];
   }
 }
-

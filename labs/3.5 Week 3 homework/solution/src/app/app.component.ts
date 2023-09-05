@@ -10,5 +10,5 @@ export class AppComponent {
   today: Date = new Date();
   user = this._authSvc.user;  // Set our user to the service's user signal
 
-  constructor(private _authSvc: AuthService) { }
+  constructor(private _authSvc: AuthService) { }   // Inject AuthService
 }
