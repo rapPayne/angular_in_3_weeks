@@ -1,7 +1,6 @@
 import { effect, Signal, WritableSignal, signal, Injectable } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { HttpClient } from '@angular/common/http';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +14,7 @@ export class OrdersService {
     effect(() => console.log(this.currentOrders())); // <- Add this line
   }
 
-  /**  Fetch an order by ID and set the currentOrder *signal* to that order. */
+  /** Fetch an order by ID and set the currentOrder *signal* to that order. */
   setCurrentOrder(id: number) {
     this._http.get(`/api/orders/${id}`)
       .subscribe({

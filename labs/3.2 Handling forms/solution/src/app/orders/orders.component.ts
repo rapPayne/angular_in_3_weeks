@@ -1,6 +1,7 @@
 import { Component, Signal, signal } from '@angular/core';
 import { OrdersService } from '../orders.service';
 import { AreaService } from '../area.service';
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -20,5 +21,4 @@ export class OrdersComponent {
     if (order.status === 'problem') return 'danger';
     return '';
   }
-
 }
