@@ -12,7 +12,7 @@ export class OrderComponent {
   constructor(private _activatedRoute: ActivatedRoute, private _http: HttpClient) { }
   ngOnInit(): void {
     const orderId = this._activatedRoute.snapshot.params['orderId'];
-    this._http.get(`http://localhost:3008/api/orders/${orderId}`).subscribe(
+    this._http.get(`/api/orders/${orderId}`).subscribe(
       {
         next: (data) => { this.order = data; }
       });
