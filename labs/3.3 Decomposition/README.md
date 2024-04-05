@@ -13,7 +13,7 @@ Take a look at `order.component.html`. We're displaying some cool summary data b
 ```
 Wow! That's some complex code. Hey, if we decompose that to a component on its own, it could be much simpler:
 ```html
-<app-menu-item *ngFor="let item of menuitems" [item]="item" />
+<app-menu-item *ngFor="let item of order().items" [item]="item" />
 ```
 Isn't that nicer? Let's create the MenuItemComponent and then use it.
 
