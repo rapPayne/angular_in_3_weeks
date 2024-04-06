@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "waiters-app:build:production"
+              "buildTarget": "waiters-app:build:production"
             },
             "development": {
-              "browserTarget": "waiters-app:build:development"
+              "buildTarget": "waiters-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "waiters-app:build"
+            "buildTarget": "waiters-app:build"
           }
         },
         "test": {
