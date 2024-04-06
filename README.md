@@ -4,6 +4,20 @@ Resources to support @RapPayne's O'Reilly course.
 
 In this course we'll learn together to create a simple Angular application.
 
+## Quick start of any lab
+1. Run the server
+- cd to the server folder
+- `npm install`
+- `npm run load-db`
+- `npm run start`
+- This will run the RESTful API server on port 3008. Leave it running!
+2. Run a lab solution
+- In a new terminal window, cd to any lab solution. Like `cd labs/3.5*/solution`
+- `npm install`
+- `npm run start`
+- Browse to http://localhost:4200
+
+
 ## Labs
 We'll be creating a small application for the wait staff (servers) at a  restaurant. When the servers show up for work, they will log on to our app and pick an area. The app will then begin assigning them meals that are ready to be delivered to guests in their area. They will mark the meal like so:
 
