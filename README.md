@@ -98,7 +98,6 @@ AppComponent will host all the other views. In it, you'll have a navigation menu
 - Log out (if logged in)
 
 
-
 <!-- You can give it a test drive here.  -->
 
 # Connect with Rap
@@ -107,5 +106,5 @@ AppComponent will host all the other views. In it, you'll have a navigation menu
 - Github: [RapPayne](https://github.com/rapPayne)
 - Reddit: [RapPayne](https://www.reddit.com/u/rapPayne)
 
-Copyright &copy; 2023 Agile Gadgets LLC. 
+Copyright &copy; 2024 Agile Gadgets LLC. 
 All rights reserved. You may not republish or copy any part of this repository except for your own personal learning. If you want to use this as courseware for a Angular course, contact [@RapPayne](http://github.com/RapPayne) to obtain a license. 

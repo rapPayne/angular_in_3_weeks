@@ -4,7 +4,7 @@
 ## Downloading starters and solutions
 1. Make sure you have the prerequisites to install this.
 - git
-- node 18.11 or better
+- node 18.13 or better
 
 2. Get this whole repository and sub-repositories. (Note the --recurse-submodules flag. It's important)
 ```bash
@@ -36,7 +36,8 @@ ng new waiters-app
 ```
 - When it asks to set up routing, tell it **No**. 
 - When it asks about styling, tell it **CSS**.
-- It will tell you when it is finished. Maybe a minute or two?
+- When it asks about Server-Side Rendering, tell it **No**.
+- It will tell you when it is finished. Maybe a minute?
 
 3. Open your site in an editor. VS Code is the most popular choice.
 ```bash
@@ -116,4 +117,3 @@ npm install
 npm run load-db
 npm run start
 ```
-
