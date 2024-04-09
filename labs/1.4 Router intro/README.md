@@ -3,7 +3,7 @@
 In this lab we'll set up client-side routing with Angular router.
 
 ## Create the routing 
-1. Create a new file in `src/app` called `app.router.ts`. Make it look like this:
+1. Your app was created with a file in `src/app` called `app.router.ts`. Make it look like this:
 ```typescript
 // All of these are needed below, so import them
 import { RouterModule } from "@angular/router";
@@ -30,25 +30,11 @@ const routes = [
 export const routing = RouterModule.forRoot(routes);
 ```
 
-Notice you're exporting an object called `routing`. When this is imported into our AppModule, it will establish routing. Let's do that.
-
-2. Import  `routing` into `app.module.ts` along with RouterModule:
-```typescript
-imports: [
-  BrowserModule,
-  RouterModule,      //  <-- Needed for routing
-  routing,           // <-- The routing table itself
-],
-```
-Don't forget to import them at the top:
-```typescript
-import { routing } from './app.router';
-import { RouterModule } from '@angular/router';
-```
+Notice you're exporting an object called `routing`. When this is imported into our AppConfig, it will establish routing. 
 
 All that's left is to provide a place for the routed components to be drawn on the page. We'll make that place in the `app.component.html`. Instead of showing hardcoded components, let the router insert whatever component that the route determines. We need a `router-outlet`.
 
-3. Edit app.component.html. Make the `<main>` look like this:
+2. Edit app.component.html. Make the `<main>` look like this:
 ```html
 <main>
   <router-outlet />  <!-- Change this line -->
@@ -56,7 +42,7 @@ All that's left is to provide a place for the routed components to be drawn on t
 ```
 And with that, you're ready to navigate around!
 
-4. Refresh your site. Try out the nav menu at the top. Manually navigate to some of these components:
+3. Refresh your site. Try out the nav menu at the top. Manually navigate to some of these components:
 
 | Navigate to ...                                    | You'll see                         |
 | -------------------------------------------------- | ---------------------------------- |

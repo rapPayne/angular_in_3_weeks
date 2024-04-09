@@ -17,15 +17,14 @@ This topic is small but it has a _major_ impact on performance and operation. Wi
 
 ```html
 <nav>
-  <a [routerLink]="'/'">Main</a>
-  <a [routerLink]="'/orders'">Orders</a>
-  <a [routerLink]="'/areas'">Areas</a>
-  <a [routerLink]="'/logout'">Logout</a>
-  <a [routerLink]="'/login'">Login</a>
+  <a routerLink="/">Main</a>
+  <a routerLink="/orders">Orders</a>
+  <a routerLink="/areas">Areas</a>
+  <a routerLink="/logout">Logout</a>
+  <a routerLink="/login">Login</a>
   <span> Hello, {{ user.first }}!</span>
 </nav>
 ```
-Note the extra set of single quotes inside the double quotes now. These are needed for Angular's routing.
 </details>
 
 4. Clear out the network tab in the browser again. Navigate around using these routerlinks. Notice -- no trips to the server! We're staying client side.
@@ -38,9 +37,9 @@ Note the extra set of single quotes inside the double quotes now. These are need
 <h1>Oops! That url isn't on our site</h1>
 <p>Maybe try one of these?</p>
 <ul>
-  <li><a [routerLink]="'/'">Home</a></li>
-  <li><a [routerLink]="'/orders'">See current orders</a></li>
-  <li><a [routerLink]="'/areas'">Choose your area</a></li>
+  <li><a routerLink="/">Home</a></li>
+  <li><a routerLink="/orders">See current orders</a></li>
+  <li><a routerLink="/areas">Choose your area</a></li>
 </ul>
 ```
 
@@ -49,4 +48,4 @@ When your browser refreshes, you'll see we have a useful page for when our users
 3. Try out those links and you'll see that their navigation is also well-behaved.
   
 ## Bonus! order.component.html
-1. There's a link in `order.component.html`. Find it and fix it. Make it use a `[routerLink]` instead of `href`.
+1. There's a link in `order.component.html`. Find it and fix it. Make it use a `routerLink` instead of `href`.
