@@ -53,7 +53,7 @@ Look around at the pieces.
 1. Create a new file in the root (not src) called `proxy.conf.json`. Make it look like this:
 ```json
 {
-  "/api/*": {
+  "/api/**": {
     "target": "http://localhost:3008",
     "secure": false,
     "changeOrigin": true,
