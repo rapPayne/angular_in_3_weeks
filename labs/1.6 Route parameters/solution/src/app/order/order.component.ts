@@ -3,8 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order',
+  standalone: true,
+  imports: [],
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css']
+  styleUrl: './order.component.css'
 })
 export class OrderComponent {
   order!: any;
