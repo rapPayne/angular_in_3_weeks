@@ -121,6 +121,14 @@ When this service is injected into any component, it will have access to the `us
 
 2. Allow them to log in. Edit `login.component.ts`:
 ```typescript
+@Component({
+  selector: 'app-login',
+  standalone: true,
+  imports: [HttpClientModule],
+  providers: [AuthService],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
+})
 export class LoginComponent {
   error = this._authService.error;
 
@@ -147,6 +155,14 @@ Let's prove it!
 
 6. Edit `app.component.ts`. Make it look like this:
 ```typescript
+@Component({
+  ...
+  providers: [AuthService],  // <-- Add this ...
+  imports: [
+    HttpClientModule,   // <-- ... and this>
+    ...
+  ],
+})
 export class AppComponent {
   today: Date = new Date();
   user = this._authSvc.user;  // Set our user to the service's user signal

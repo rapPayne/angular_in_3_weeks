@@ -1,11 +1,11 @@
 <header>
   <nav>
-    <a [routerLink]="'/'">Main</a>
-    <a [routerLink]="'/orders'">Orders</a>
-    <a [routerLink]="'/areas'">Areas</a>
-    <a [routerLink]="'/logout'">Logout</a>
-    <a [routerLink]="'/login'">Login</a>
-    <span> Hello, {{ user()?.first }}!</span> <!-- Add parentheses b/c it's a signal -->
+    <a routerLink="/">Main</a>
+    <a routerLink="/orders">Orders</a>
+    <a routerLink="/areas">Areas</a>
+    <a routerLink="/logout">Logout</a>
+    <a routerLink="/login">Login</a>
+    <span> Hello, {{ user()?.first }}!</span>
   </nav>
 </header>
 <main>

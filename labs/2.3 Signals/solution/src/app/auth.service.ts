@@ -1,11 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable, WritableSignal, signal } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Injectable, WritableSignal, signal } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  user: WritableSignal<any> = signal(undefined);  // The logged-in user 
+  user: WritableSignal<any> = signal(undefined);  // The logged-in user
   error: WritableSignal<any> = signal(undefined); // An error message
 
   constructor(private _http: HttpClient) { }
