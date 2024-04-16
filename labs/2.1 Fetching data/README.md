@@ -13,22 +13,20 @@ If it tells you it is running on port 3008, you've got it right. You can validat
 
 ## Preparing for any fetches
 
-1. When doing any fetching in Angular via HTTP, we need to imports the HttpClientModule. Open `app.module.ts` and `import { HttpClientModule } from '@angular/common/http';` at the top. 
+1. When doing any HTTP fetching in a component, we need to imports the HttpClientModule. Open `order.component.ts` and `import { HttpClientModule } from '@angular/common/http';` at the top. 
 
 2. Then put it in the imports array:
 ```typescript
 imports: [
-  BrowserModule,
   HttpClientModule,  //  <-- Import HttpClientModule
-  RouterModule,
-  routing,
+  ...
 ],
 ```
 
 ## Fetching an order
 Now let's read an actual order from the API server!
 
-1. Edit `order.component.ts`. Add this to the top:
+1. Add this to the top of order.component.ts:
 ```typescript
 import { HttpClient } from '@angular/common/http';
 ```
@@ -45,7 +43,7 @@ constructor(
 ```typescript
 ngOnInit(): void {
   const orderId = this._activatedRoute.snapshot.params['orderId'];
-  this._http.get(`/api/orders/${orderId}`).subscribe(
+  this._http.get(`http://localhost:3008/api/orders/${orderId}`).subscribe(
     {
       next: (data) => { this.order = data; }
     });

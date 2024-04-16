@@ -1,20 +1,26 @@
+import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-order',
+  standalone: true,
+  imports: [RouterModule, HttpClientModule],
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css']
+  styleUrl: './order.component.css'
 })
 export class OrderComponent {
   order!: any;
-  constructor(private _activatedRoute: ActivatedRoute, private _http: HttpClient) { }
+  constructor(
+    private _activatedRoute: ActivatedRoute,
+    private _http: HttpClient //  <-- Add this
+  ) { }
   ngOnInit(): void {
     const orderId = this._activatedRoute.snapshot.params['orderId'];
-    this._http.get(`/api/orders/${orderId}`).subscribe(
+    this._http.get(`http://localhost:3008/api/orders/${orderId}`).subscribe(
       {
-        next: (data) => { this.order = data; }
+        next: (data) => { this.order = data; console.log(this.order) }
       });
     // this.order = { id: orderId, }; // <-- Remove your hardcoded order
   }
@@ -23,17 +29,8 @@ export class OrderComponent {
     return order?.items?.reduce((acc: number, item: any) =>
       acc + item.price, 0);
   }
-  // getSubtotal(order: any): number {
-  //   if (!order?.items) return 0;
-  //   let total = 0;
-  //   for (let item of order?.items) {
-  //     total += item.price;
-  //   }
-  //   return total;
-  // }
 
-  getTotal(order: any): number {
+  getTotal(order: any) {
     return this.getSubtotal(order) + order?.tax + order?.tip;
   }
-
 }
