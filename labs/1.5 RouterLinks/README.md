@@ -9,9 +9,14 @@ This topic is small but it has a _major_ impact on performance and operation. Wi
 
 ![clear](../assets/DevTools%20clear.png)
 
-2. Now click on any link in the nav bar at the top. Look at how much traffic is in the network tab! That's because all clicks are re-loading the **entire** site!
+2. Edit app.component.ts. Add `RouterModule` to the list of imports. (Don't forget to import RouterModule from @angular/router).
+```typescript
+imports: [RouterModule, HomeComponent, AreasComponent, OrderComponent],
+```
 
-3. Change your navbar, replacing all the `href`s with `[routerLink]`s. Do it on your own if possible, but if you need a reminder, look here:
+3. Now click on any link in the nav bar at the top. Look at how much traffic is in the network tab! That's because all clicks are re-loading the **entire** site!
+
+4. Change your navbar, replacing all the `href`s with `routerLink`s. Do it on your own if possible, but if you need a reminder, look here:
 <details>
 <summary>Expand for a possible solution</summary>
 
@@ -27,10 +32,10 @@ This topic is small but it has a _major_ impact on performance and operation. Wi
 ```
 </details>
 
-4. Clear out the network tab in the browser again. Navigate around using these routerlinks. Notice -- no trips to the server! We're staying client side.
+5. Clear out the network tab in the browser again. Navigate around using these routerlinks. Notice -- no trips to the server! We're staying client side.
 
 ## Navigating from the NotFoundComponent
-1. Navigate to [http://localhost:4200/NonsenseURL](http://localhost:4200/NonsenseURL). The NotFoundComponent is displayed. That's good but this component is ugly.
+1. Navigate to [http://localhost:4200/NonsenseURL](http://localhost:4200/NonsenseURL). The NotFoundComponent is displayed. That's good but let's give our user some hints as to what to do next.
 
 2. Replace the entire contents of `not-found.component.html` with this.
 ```html
@@ -43,9 +48,9 @@ This topic is small but it has a _major_ impact on performance and operation. Wi
 </ul>
 ```
 
-When your browser refreshes, you'll see we have a useful page for when our users get lost.
+3. Add RouterModule to your component's `imports` array.
 
-3. Try out those links and you'll see that their navigation is also well-behaved.
+4. Try out those links and you'll see that their navigation is also well-behaved.
   
 ## Bonus! order.component.html
 1. There's a link in `order.component.html`. Find it and fix it. Make it use a `routerLink` instead of `href`.
