@@ -35,12 +35,22 @@ getOrder(orderId: number) {
 }
 ```
 
-3. Inject the service into `orders.component.ts`. You can remove the HttpClient if you like.
+3. Inject the service into `order.component.ts`. You can remove the HttpClient and HttpClientModule if you like.
 ```typescript
-constructor(
-  private _ordersService: OrdersService,  //  <-- Add this
-  private _activatedRoute: ActivatedRoute,
-) { }
+@Component({
+  selector: 'app-order',
+  standalone: true,
+  imports: [RouterModule, HttpClientModule],
+  providers: [OrdersService],   //  <-- Add this ...
+  templateUrl: './order.component.html',
+  styleUrl: './order.component.css'
+})
+export class OrderComponent {
+  order!: any;
+  constructor(
+    private _ordersService: OrdersService,  //  <-- ... and this
+    private _activatedRoute: ActivatedRoute,
+  ) { }
 ```
 
 4. Change ngOnInit to use the service instead. Subscribe here.
@@ -53,6 +63,6 @@ ngOnInit(): void {
 }
 ```
 
-5. Run your app. Your refactor worked if you can still navigate to different order by order number.
+5. Run your app. Your refactor worked if you can still navigate to different orders by order number.
 
 Note: If you ever subscribe to an observable, you should also unsubscribe to avoid memory leaks. We are not doing that here merely because we will soon change how we read. This new method won't require an unsubscribe.
