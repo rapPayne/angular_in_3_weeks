@@ -91,6 +91,15 @@ Now let's interpolate these functions on our HTML template.
 ```
 </details>
 
-2. Run and view in the browser. You should get a sub-total of about $39.88 and a total of about $53.21. Don't worry about rounding errors or formatting for now. We'll fix that later. (Or you can study Angular pipes if you like).
+2. Notice that `[routerLink]` isn't recognized. Do you remember how to fix it? We did that in the Routing chapter. You add `RouterModule` to the imports array in order.component.ts. Don't forget to import it!
+```typescript
+@Component({
+  ...
+  imports: [RouterModule],  // <- Add RouterModule here
+})
+export class OrderComponent {
+```
+
+3. Run and view in the browser. You should get a sub-total of about $39.88 and a total of about $53.21. Don't worry about rounding errors or formatting for now. We'll fix that later. (Or you can study Angular pipes if you like).
 
 Nicely done. See you back in class soon!

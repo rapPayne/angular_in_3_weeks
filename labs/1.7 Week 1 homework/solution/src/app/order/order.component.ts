@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-order',
+  standalone: true,
+  imports: [RouterModule],
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css']
+  styleUrl: './order.component.css'
 })
 export class OrderComponent {
   order!: any;
@@ -33,17 +35,8 @@ export class OrderComponent {
     return order?.items?.reduce((acc: number, item: any) =>
       acc + item.price, 0);
   }
-  // getSubtotal(order: any): number {
-  //   if (!order?.items) return 0;
-  //   let total = 0;
-  //   for (let item of order.items) {
-  //     total += item.price;
-  //   }
-  //   return total;
-  // }
 
-  getTotal(order: any): number {
+  getTotal(order: any) {
     return this.getSubtotal(order) + order?.tax + order?.tip;
   }
-
 }
