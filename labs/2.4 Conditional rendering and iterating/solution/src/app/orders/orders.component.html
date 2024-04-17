@@ -1,0 +1,8 @@
+<h1>Orders</h1>
+@for (order of orders() ; track order.id) {
+<div [routerLink]="'/orders/'+order.id">
+  id: {{order.id}}
+  area: {{order.area}}
+  status: {{order.status}}
+</div>
+}

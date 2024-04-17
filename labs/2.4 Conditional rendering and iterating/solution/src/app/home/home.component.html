@@ -1,0 +1,7 @@
+<h1>{{restaurantName}}</h1>
+<h2>Server's site</h2>
+@if(user()) {
+<p>Welcome, {{ user().first }}!</p>
+} @else {
+<p>You are not logged in. Click <a [routerLink]="'/login'">here</a> to log in.</p>
+}
