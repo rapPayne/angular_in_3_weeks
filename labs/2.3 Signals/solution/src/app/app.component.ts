@@ -10,19 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
   selector: 'app-root',
   standalone: true,
   providers: [AuthService],
-  imports: [
-    RouterModule,
-    HttpClientModule,
-    HomeComponent,
-    AreasComponent,
-    OrderComponent,
-  ],
+  imports: [RouterModule, HttpClientModule, HomeComponent, AreasComponent, OrderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   today: Date = new Date();
-  user = this._authSvc.user;  // Set our user to the service's user signal
-
-  constructor(private _authSvc: AuthService) { }   // Inject AuthService
+  user = this._authService.user; // Set our user to the service's user signal
+  constructor(private _authService: AuthService) { }
 }

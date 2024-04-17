@@ -7,8 +7,8 @@
 <p>Order time: {{ order().orderTime }}</p>
 <p>Pickup time: {{ order().pickupTime }}</p>
 
-<p class="money">Subtotal: {{ getSubtotal(order()) }}</p>
+<p class="money">Subtotal: {{ getSubtotal(order()) }}</p> <!-- Add this line -->
 <p class="money">Tax: {{order().tax }}</p>
 <p class="money">Tip: {{order().tip }}</p>
-<p class="money total">Total: {{ getTotal(order()) }}</p>
+<p class="money total">Total: {{ getTotal(order()) }}</p> <!-- Add this line -->
 <a [routerLink]="'/orders'">Back to orders</a>

@@ -108,7 +108,7 @@ export class AuthService {
     this._http.post('/api/login', { username, password })
       .subscribe({
         next: (user) => this.user.set(user),  // On success, set the user signal
-        error: (err) => this.error.set(err.error) // On failed, set error signal
+        error: err => this.error.set(`Problem logging in: ${err.error}`), // On failed, set error signal
       });
   }
 
@@ -124,8 +124,8 @@ When this service is injected into any component, it will have access to the `us
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [HttpClientModule],
-  providers: [AuthService],
+  imports: [HttpClientModule],  // <-- Add this
+  providers: [AuthService],     // <-- Add this
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
