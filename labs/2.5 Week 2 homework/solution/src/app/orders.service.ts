@@ -11,7 +11,6 @@ export class OrdersService {
   constructor(private _http: HttpClient) {
     const obs$ = this._http.get(`/api/orders/current`);
     this.currentOrders = toSignal(obs$);  // Converting the observable to a signal
-    effect(() => console.log(this.currentOrders())); // <- Add this line
   }
 
   /** Fetch an order by ID and set the currentOrder *signal* to that order. */
@@ -32,3 +31,13 @@ export class OrdersService {
       });
   }
 }
+
+
+
+// export class OrdersService {
+
+//   getOrder(orderId: number) {
+//     return this._http.get(`/api/orders/${orderId}`)
+//   }
+// }
+

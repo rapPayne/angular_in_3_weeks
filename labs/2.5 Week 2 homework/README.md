@@ -44,24 +44,27 @@ Now we just need to show it to the user.
 
 (While testing, please note that you can't see this change at runtime yet because we're not finished wiring up the AreasComponent. But you can simulate it by hardcoding a starting value in `areas.service.ts`. Just put any string in the signal's default value.)
 
-4. Now make that paragraph appear only if the `area` signal has something in it. (Hint: Use *ngIf.)
+4. Now make that paragraph appear only if the `area` signal has something in it. (Hint: Use @if.)
 <details>
 <summary>Expand for a possible solution</summary>
 
 ```html
-<p *ngIf="area()">Your area is {{ area() }}</p>
+@if ( area() ) {
+<p>Your area is {{ area() }}</p>
+}
 ```
 </details>
 
-5. Lastly, let's put something on the page if there's no area chosen. Tell the waiter to go to `/areas` to choose an area. (Hints: Use an `else` in your *ngIf and create a `ng-template`.)
+5. Lastly, let's put something on the page if there's no area chosen. Tell the waiter to go to `/areas` to choose an area. (Hints: Use an `@else` in your @if and create a `ng-template`.)
 <details>
 <summary>Expand for a possible solution</summary>
 
 ```html
-<p *ngIf="area() ; else noArea">Your area is {{ area() }}</p>
-<ng-template #noArea>
-  <p>You are not assigned to an area. Click <a [routerLink]="'/areas'">here</a> to claim one.</p>
-</ng-template>
+@if ( area() ) {
+<p>Your area is {{ area() }}</p>
+} @else {
+<p>You are not assigned to an area. Click <a [routerLink]="'/areas'">here</a> to claim one.</p>
+}
 ```
 </details>
 
@@ -69,7 +72,7 @@ Now we just need to show it to the user.
 ## Conditional display in the nav menu
 Take a look at the navigation menu at the top of your app. Some of those options don't make sense. I mean, what's the point of showing "Login" if the user is already logged in? And we can't really show "Orders" if the user is not logged in. Let's fix that.
 
-All you're going to do is edit `app.component.html` and add `*ngIf` conditions to each of the `<a [routerLink]="whatever">` tags.
+All you're going to do is edit `app.component.html` and add `@if` conditions to each of the `<a [routerLink]="whatever">` tags.
 
 1. If the user is logged in, show "Orders", "Areas", "Logout", and the greeting `<span>` that says hello to the user. (Hint: The `user` signal will have something in it.)
 
@@ -81,36 +84,22 @@ All you're going to do is edit `app.component.html` and add `*ngIf` conditions t
 <summary>Expand for a possible solution</summary>
 
 ```html
-<nav>
-  <a [routerLink]="'/'">Main</a>
-  <a *ngIf="user()" [routerLink]="'/orders'">Orders</a>
-  <a *ngIf="user()" [routerLink]="'/areas'">Areas</a>
-  <a *ngIf="user()" [routerLink]="'/logout'">Logout</a>
-  <a *ngIf="!user()" [routerLink]="'/login'">Login</a>
-  <span *ngIf="user()"> Hello, {{ user().first }}!</span>
-</nav>
+<header>
+  <nav>
+    <a routerLink="/">Main</a>
+    @if (user()){
+    <a routerLink="/orders">Orders</a>
+    <a routerLink="/areas">Areas</a>
+    <a routerLink="/logout">Logout</a>
+    <span> Hello, {{ user() }}!</span>
+    }
+    @else {
+    <a routerLink="/login">Login</a>
+    }
+  </nav>
+</header>
 ```
 </details>
-
-Here's a different method.
-<details>
-<summary>Expand for a possible solution</summary>
-
-```html
-<nav *ngIf="user()">
-  <a [routerLink]="'/'">Main</a>
-  <a [routerLink]="'/orders'">Orders</a>
-  <a [routerLink]="'/areas'">Areas</a>
-  <a [routerLink]="'/logout'">Logout</a>
-  <span> Hello, {{ user().first }}!</span>
-</nav>
-<nav *ngIf="!user()">
-  <a [routerLink]="'/'">Main</a>
-  <a [routerLink]="'/login'">Login</a>
-</nav>
-```
-</details>
-
 
 ## When you log in, auto-navigate to "/"
 Our current login process "authenticates" the user when they hit the login button. But we're not giving them any indication that their login was successful. Hey, let's forward them to the HomeComponent when their login is successful.
@@ -119,7 +108,10 @@ You're probably thinking "I'll put something behind the login button's click eve
 
 1. Edit `login.component.ts` and find the constructor.
 
-2. Inject a `Router` service. (Hint: you'll have to `import { Router } from '@angular/router'`).
+2. Inject a `Router` service. Because of this injection, you'll have to
+- `import { Router, RouterModule } from '@angular/router'`
+- put `Router` in the providers array
+- Put `RouterModule` in the imports array
 
 3. Also in the constructor add a signal **effect**. It should check `this._authService.user()` and if it is truthy, navigate home.
 
@@ -129,14 +121,11 @@ See if you can figure this out yourself without peeking, but in case you need a 
 <summary>Expand for a possible solution</summary>
 
 ```typescript
-constructor(
-  private _authService: AuthService,
-  private _router: Router) {
+constructor(private _authService: AuthService, private _router: Router) {
   // If user changes, navigate to home
   effect(() => {
-    console.log('changing user: ', this._authService.user());
-    if (this._authService.user())
-      this._router.navigate(['/']);
+    if (this.user())
+      _router.navigate(['/'])
   });
 }
 ```
@@ -147,9 +136,10 @@ This solution is more concise but may be harder to read.
 <summary>Expand for a possible solution</summary>
 
 ```typescript
-constructor(private _authService: AuthService, private _router: Router) {
-  effect(() => (_authService.user()) && this._router.navigate(["/"]))
-}
+  constructor(private _authService: AuthService, private _router: Router) {
+    // If user changes, navigate to home
+    effect(() => this.user() && _router.navigate(['/']));
+  }
 ```
 </details>
 

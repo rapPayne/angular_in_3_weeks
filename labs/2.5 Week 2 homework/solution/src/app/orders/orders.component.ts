@@ -1,11 +1,15 @@
-import { Component, Signal, signal } from '@angular/core';
+import { Component, Signal } from '@angular/core';
 import { OrdersService } from '../orders.service';
+import { RouterModule } from '@angular/router';
 import { AreaService } from '../area.service';
 
 @Component({
   selector: 'app-orders',
+  standalone: true,
+  imports: [RouterModule],
+  providers: [AreaService, OrdersService],
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.css']
+  styleUrl: './orders.component.css'
 })
 export class OrdersComponent {
   orders: Signal<any[]> = this._ordersService.currentOrders;
