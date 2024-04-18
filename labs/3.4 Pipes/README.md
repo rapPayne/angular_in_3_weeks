@@ -13,14 +13,18 @@ You probably noticed that the prices in the OrderComponent don't look very nice.
 ```html
 <p class="price">{{ item.price | currency }}</p>
 ```
-3. Edit `order.component.html`. Add currency pipes to these lines:
+This is the currency pipe that formats numbers. Bummer, though, it's unrecognized.
+
+3. Edit `order.component.ts` and imports `CommonModule` which is in `@angular/common`
+
+4. Let's fix the other numbers on the order page. Edit `order.component.html`. Add currency pipes to these lines:
 ```html
 <p class="money">Subtotal: {{ getSubtotal(order()) |currency}}</p>
 <p class="money">Tax: {{order().tax |currency}}</p>
 <p class="money">Tip: {{order().tip |currency}}</p>
 <p class="money total">Total: {{ getTotal(order()) |currency}}</p>
 ```
-4. Run your app and look at any order. Much better, no?
+5. Run your app and look at any order. Much better, no?
 
 ## Using the date pipe
 Similarly, the dates look pretty poor. We can fix their appearances with pipes also.
@@ -59,7 +63,7 @@ export class OrderStatusPipe implements PipeTransform {
     pickedUp: 'On its way!',
     delivered: 'Guest has their order',
     problem: 'Problem with the order',
-    completed: 'Paid for. The order is closed.'
+    complete: 'Paid for. The order is closed.'
   };
   transform(value: string, ...args: unknown[]): string {
     return this.translations[value];
@@ -69,9 +73,14 @@ export class OrderStatusPipe implements PipeTransform {
 
 3. Use it in `order.component.html` when we're displaying the order status:
 ```html
-Status: {{ order.status | orderStatus }}
+<p>Status: {{ order().status | orderStatus }}</p>
 ```
 
-4. Run your app and look at some orders. Nice, right?
+4. It's not recognized until you imports it in `order.component.ts`:
+```typescript
+imports: [CommonModule, RouterModule, MenuItemComponent, OrderStatusPipe]
+```
+
+5. Run your app and look at some orders. Nice, right?
 
 That's it! You're finished.

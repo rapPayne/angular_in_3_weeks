@@ -5,20 +5,24 @@ import { Injectable, WritableSignal, signal } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  user: WritableSignal<any> = signal(undefined);  // The logged-in user 
+  user: WritableSignal<any> = signal(undefined);
   error: WritableSignal<any> = signal(undefined); // An error message
-
   constructor(private _http: HttpClient) { }
 
-  login(username: string, password: string) {
-    this._http.post('/api/login', { username, password })
+  login(username: string, password: string): void {
+    this.user.set(undefined)
+    this.error.set(undefined)
+    this._http.post(`/api/login`, { username, password })
       .subscribe({
-        next: (user) => this.user.set(user),  // On success, set the user signal
-        error: (err) => this.error.set(err.error) // On failed, set error signal
+        next: user => {
+          this.user.set(user);
+          console.log("user is set to ", this.user())
+        },
+        error: err => this.error.set(`Problem logging in: ${err.error}`),
       });
   }
 
-  logout() {
-    this.user.set(undefined);  // Set the user signal to nothing
+  logout(): void {
+    this.user.set(undefined);
   }
 }
