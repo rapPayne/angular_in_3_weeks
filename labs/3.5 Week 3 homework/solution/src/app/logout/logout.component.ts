@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
 import { AreaService } from '../area.service';
+import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logout',
+  standalone: true,
+  imports: [],
   templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.css']
+  styleUrl: './logout.component.css'
 })
 export class LogoutComponent {
   constructor(

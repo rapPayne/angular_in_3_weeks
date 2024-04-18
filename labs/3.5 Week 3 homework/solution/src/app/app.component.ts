@@ -1,14 +1,23 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { AreasComponent } from './areas/areas.component';
+import { OrderComponent } from './order/order.component';
 import { AuthService } from './auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { OrdersService } from './orders.service';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  providers: [AuthService, OrdersService],
+  imports: [CommonModule, RouterModule, HttpClientModule, HomeComponent, AreasComponent, OrderComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
   today: Date = new Date();
-  user = this._authSvc.user;  // Set our user to the service's user signal
-
-  constructor(private _authSvc: AuthService) { }   // Inject AuthService
+  user = this._authService.user; // Set our user to the service's user signal
+  constructor(private _authService: AuthService) { }
 }

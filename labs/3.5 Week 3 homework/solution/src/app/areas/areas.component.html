@@ -1,5 +1,7 @@
 <h1>Your area</h1>
 <label for="area">Select your area</label>
 <select [ngModel]="area()" (ngModelChange)="_areaService.area.set($event)" id="area">
-  <option *ngFor="let a of areas" [value]="a">{{a}}</option>
+  @for (a of areas; track $index) {
+  <option [value]="a">{{a}}</option>
+  }
 </select>

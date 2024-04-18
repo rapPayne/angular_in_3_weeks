@@ -5,12 +5,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class OrdersService {
-  currentOrders: WritableSignal<any> = signal([]);   // All orders that a waiter cares about
+  currentOrders: WritableSignal<any> = signal([]);  // All orders that a waiter cares about
   currentOrder: WritableSignal<any> = signal({});  // The order we're focusing on right now
   private _intervalId?: any;
 
   constructor(private _http: HttpClient) {
-    effect(() => console.log(this.currentOrders()));
+    const obs$ = this._http.get(`/api/orders/current`);
     // No need to manually unsubscribe from a _http.get() observable; HttpClient auto-unsubscribes after emitting a single value.
     this._http.get(`/api/orders/current`)
       .subscribe({
@@ -48,3 +48,4 @@ export class OrdersService {
       });
   }
 }
+
