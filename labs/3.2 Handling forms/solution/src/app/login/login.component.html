@@ -10,4 +10,6 @@
   </div>
   <button type="submit">Login</button>
 </form>
-<div *ngIf="error()" class="danger alert">{{error()}}</div>
+@if (error()) {
+<div class="danger alert">{{ error() }}</div>
+}

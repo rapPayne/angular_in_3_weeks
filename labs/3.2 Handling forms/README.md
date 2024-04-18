@@ -2,11 +2,10 @@
 # Handling forms
 <!-- Time: 15min -->
 
-
 ## Binding the area
-We've been able to display the area a waiter is assigned to but we haven't been able to have them select it yet. When we're finished with this next exercise, they'll choose an area from the dropdown box and you can watch it change.
+We've been able to display the area a waiter is assigned to but we haven't been able to have them select it yet. When we're finished with this next exercise, they'll choose an area from the dropdown box and you can watch it change in every component.
 
-1. Edit `areas.component.ts` and inject the `AreaService` we created earlier. Create a new property called area and tie it to the AreaService's area:
+1. Edit `areas.component.ts` and inject the `AreaService` we created earlier. Create a new property called area and tie it to the AreaService's area. Oh! And while we're here, 
 ```typescript
 export class AreasComponent {
   area = this._areaService.area;                    // <-- Add this
@@ -22,24 +21,26 @@ export class AreasComponent {
 <h1>Your area</h1>
 <label for="area">Select your area</label>
 <select [ngModel]="area()" (ngModelChange)="_areaService.area.set($event)" id="area">
-  <option *ngFor="let a of areas" [value]="a">{{a}}</option>
+  @for (a of areas; track $index) {
+  <option [value]="a">{{a}}</option>
+  }
 </select>
 ```
 As soon as you type that in, you're reminded that we haven't imported the FormsModule yet.
 
-3. Edit `app.module.ts`. Import FormsModule at the top:
+3. Edit `areas.component.ts` again. Import FormsModule at the top:
 ```typescript
 import { FormsModule } from '@angular/forms';
 ```
 and add it to the imports array:
 ```typescript
-imports: [
-  BrowserModule,
-  FormsModule,      //  <-- Import FormsModule
-  HttpClientModule,
-  RouterModule,
-  routing,
-],
+@Component({
+  selector: 'app-areas',
+  standalone: true,
+  imports: [FormsModule],      //  <-- Import FormsModule
+  templateUrl: './areas.component.html',
+  styleUrl: './areas.component.css'
+})
 ```
 Now if you look, you'll find your error messages about ngModel have been satisfied. Let's test it out now.
 
@@ -48,7 +49,6 @@ Now if you look, you'll find your error messages about ngModel have been satisfi
 6. Navigate to /areas. Select an area from the dropdown.
 7. Navigate to /orders again.
 8. Does it say your Area? It should!
-
 
 ## Login form
 Up to now we've been authenticating to the server with hardcoded credentials. It's time to get those credentials from the user through the Login form.
@@ -80,10 +80,15 @@ login() {
   </div>
   <button type="submit">Login</button>
 </form>
-<div *ngIf="error()" class="danger alert">{{error()}}</div>
+@if (error()) {
+<div class="danger alert">{{ error() }}</div>
+}
 ```
 
-4. Try to login with bad credentials. Do you see an error message?
-5. Try to login with good credentials. Do you get navigated to the home component?
+4. Once again, the IDE reminds us to import FormsModule into the component. Edit `login.component.ts`. Add FormsModule to the `imports` array.
+
+5. Try to login with bad credentials. Do you see an error message?
+6. Try to login with good credentials. Do you get navigated to the home component?
+(Remember from earlier labs, a good couple of usernames are "server1" and "server2". All passwords are "pass" for testing purposes).
 
 If the answer to both of those questions is yes, congratulations! You're finished.
