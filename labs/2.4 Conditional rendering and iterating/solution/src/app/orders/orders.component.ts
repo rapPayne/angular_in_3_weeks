@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-orders',
   standalone: true,
   imports: [RouterModule],
-  providers: [OrdersService],
+  providers: [],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.css'
 })

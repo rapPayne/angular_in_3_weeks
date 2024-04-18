@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
   selector: 'app-login',
   standalone: true,
   imports: [HttpClientModule],
-  providers: [AuthService],
+  providers: [],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

@@ -6,7 +6,7 @@ import { OrdersService } from '../orders.service';
 @Component({
   selector: 'app-order',
   standalone: true,
-  providers: [OrdersService],
+  providers: [],
   imports: [RouterModule, HttpClientModule],
   templateUrl: './order.component.html',
   styleUrl: './order.component.css'

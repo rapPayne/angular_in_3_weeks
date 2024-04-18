@@ -91,9 +91,7 @@ How do we know? Well, if they're logged in, the `user` signal from the AuthServi
   selector: 'app-home',
   standalone: true,
   imports: [RouterModule],   // <-- Add this
-  providers: [AuthService],  // <-- Add this
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  ..
 })
 export class HomeComponent {
   restaurantName: string = "Dinner and a Movie";

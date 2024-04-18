@@ -16,6 +16,11 @@ ng generate service Area
 ng generate service Auth
 ```
 
+3. These services will be needed in various places throughout your app. In order for them to share a singleton instance, they should be provided at the highest common ancestor. So put them in the `providers` array in AppComponent:
+```typescript
+providers: [AreaService, AuthService, OrdersService],
+```
+
 Don't forget to restart your development server!
 ```bash
 npm run start
@@ -37,18 +42,10 @@ getOrder(orderId: number) {
 
 3. Inject the service into `order.component.ts`. You can remove the HttpClient and HttpClientModule if you like.
 ```typescript
-@Component({
-  selector: 'app-order',
-  standalone: true,
-  imports: [RouterModule, HttpClientModule],
-  providers: [OrdersService],   //  <-- Add this ...
-  templateUrl: './order.component.html',
-  styleUrl: './order.component.css'
-})
 export class OrderComponent {
   order!: any;
   constructor(
-    private _ordersService: OrdersService,  //  <-- ... and this
+    private _ordersService: OrdersService,  //  <-- Add this
     private _activatedRoute: ActivatedRoute,
   ) { }
 ```

@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-home',
   standalone: true,
   imports: [RouterModule],   // <-- Add this
-  providers: [AuthService],  // <-- Add this
+  providers: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

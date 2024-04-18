@@ -125,9 +125,7 @@ When this service is injected into any component, it will have access to the `us
   selector: 'app-login',
   standalone: true,
   imports: [HttpClientModule],  // <-- Add this
-  providers: [AuthService],     // <-- Add this
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  ...
 })
 export class LoginComponent {
   error = this._authService.error;
@@ -157,9 +155,8 @@ Let's prove it!
 ```typescript
 @Component({
   ...
-  providers: [AuthService],  // <-- Add this ...
   imports: [
-    HttpClientModule,   // <-- ... and this>
+    HttpClientModule,   // <-- Add this ...
     ...
   ],
 })
