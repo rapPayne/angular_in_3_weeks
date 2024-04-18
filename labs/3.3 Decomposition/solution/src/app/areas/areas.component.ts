@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { AreaService } from '../area.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-areas',
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './areas.component.html',
-  styleUrls: ['./areas.component.css']
+  styleUrl: './areas.component.css'
 })
 export class AreasComponent {
   area = this._areaService.area;                    // <-- Add this

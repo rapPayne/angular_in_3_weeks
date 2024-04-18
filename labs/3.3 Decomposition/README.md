@@ -3,17 +3,23 @@
 
 Take a look at `order.component.html`. We're displaying some cool summary data but we can't currently see the the menu items that the diners ordered. We *could* iterate all of those like this:
 ```html
-  <div *ngFor="let item of order().items">
+@for(let item of order().items; track item.id) {
+  <div>
     <p class="firstName">For {{item.firstName}}</p>
-    <p class="price">{{item.price | currency }}</p>
+    <p class="price">{{item.price }}</p>
     <p class="name">{{item.name}}</p>
     <img [src]="item.imageUrl" alt="" class="imageUrl" />
-    <p *ngIf="item.notes" class="notes">Notes: {{ item.notes }}</p>
+  @if(item.notes) {
+    <p class="notes">Notes: {{ item.notes }}</p>
+  }
   </div>
+}
 ```
 Wow! That's some complex code. Hey, if we decompose that to a component on its own, it could be much simpler:
 ```html
-<app-menu-item *ngFor="let item of order().items" [item]="item" />
+@for(let item of order().items; track item.id) {
+<app-menu-item [item]="item" />
+}
 ```
 Isn't that nicer? Let's create the MenuItemComponent and then use it.
 
@@ -29,11 +35,13 @@ npm start
 2. Edit menu-item.component.html. Replace its contents with this:
 ```html
 <div>
-  <p class="firstName">For {{ item.firstName }}</p>
-  <p class="price">{{ item.price }}</p>
-  <p class="name">{{ item.name }}</p>
+  <p class="firstName">For {{item.firstName}}</p>
+  <p class="price">{{item.price }}</p>
+  <p class="name">{{item.name}}</p>
   <img [src]="item.imageUrl" alt="" class="imageUrl" />
-  <p *ngIf="item.notes" class="notes">Notes: {{ item.notes }}</p>
+  @if(item.notes) {
+  <p class="notes">Notes: {{ item.notes }}</p>
+  }
 </div>
 ```
 Whoa! There's an error! What's up with `item`? Obviously that's a property that we must add to its TypeScript class.
@@ -46,17 +54,21 @@ Remember, you'll need to `import { Input } from '@angular/core`.
 
 The error should be gone. 
 
-4. Add these to order.component.html.
+4. Add `MenuItemComponent` to the `imports` array for the OrderComponent.
+
+5. Add these to order.component.html.
 ```html
 <h3>Items</h3>
 <section id="items">
-  <app-menu-item *ngFor="let item of order().items" [item]="item" />
+@for(item of order().items; track item.id) {
+<app-menu-item [item]="item" />
+}
 </section>
 ```
 
-5. Test it out. In addition to the order summary, you can now also see the menu items that were ordered by each party at the table and any special instructions on the order.
+6. Test it out. In addition to the order summary, you can now also see the menu items that were ordered by each party at the table and any special instructions on the order.
 
-6. Bonus!! This will make for some really nice styling. Make `menu-item.component.css` look like this:
+7. Bonus!! This will make for some really nice styling. Make `menu-item.component.css` look like this:
 ```css
 div {
   border: 1px solid var(--dark2);

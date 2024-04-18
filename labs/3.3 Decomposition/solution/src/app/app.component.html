@@ -1,11 +1,15 @@
 <header>
   <nav>
-    <a [routerLink]="'/'">Main</a>
-    <a *ngIf="user()" [routerLink]="'/orders'">Orders</a>
-    <a *ngIf="user()" [routerLink]="'/areas'">Areas</a>
-    <a *ngIf="user()" [routerLink]="'/logout'">Logout</a>
-    <a *ngIf="!user()" [routerLink]="'/login'">Login</a>
-    <span *ngIf="user()"> Hello, {{ user().first }}!</span>
+    <a routerLink="/">Main</a>
+    @if (user()){
+    <a routerLink="/orders">Orders</a>
+    <a routerLink="/areas">Areas</a>
+    <a routerLink="/logout">Logout</a>
+    <span> Hello, {{ user()?.first }}!</span>
+    }
+    @else {
+    <a routerLink="/login">Login</a>
+    }
   </nav>
 </header>
 <main>
