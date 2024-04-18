@@ -7,7 +7,7 @@ import { AreaService } from '../area.service';
   selector: 'app-orders',
   standalone: true,
   imports: [RouterModule],
-  providers: [AreaService, OrdersService],
+  providers: [],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.css'
 })

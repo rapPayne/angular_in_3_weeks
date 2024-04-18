@@ -5,7 +5,7 @@
     <a routerLink="/orders">Orders</a>
     <a routerLink="/areas">Areas</a>
     <a routerLink="/logout">Logout</a>
-    <span> Hello, {{ user() }}!</span>
+    <span> Hello, {{ user()?.first }}!</span>
     }
     @else {
     <a routerLink="/login">Login</a>
@@ -13,7 +13,7 @@
   </nav>
 </header>
 <main>
-  <router-outlet /> <!-- Change this line -->
+  <router-outlet />
 </main>
 <footer>
   <p>Copyright &copy; {{ today.getFullYear() }} Dinner and a Movie</p>

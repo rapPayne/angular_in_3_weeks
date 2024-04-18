@@ -63,7 +63,7 @@ Now we just need to show it to the user.
 @if ( area() ) {
 <p>Your area is {{ area() }}</p>
 } @else {
-<p>You are not assigned to an area. Click <a [routerLink]="'/areas'">here</a> to claim one.</p>
+<p>You are not assigned to an area. Click <a routerLink="/areas">here</a> to claim one.</p>
 }
 ```
 </details>
@@ -72,7 +72,7 @@ Now we just need to show it to the user.
 ## Conditional display in the nav menu
 Take a look at the navigation menu at the top of your app. Some of those options don't make sense. I mean, what's the point of showing "Login" if the user is already logged in? And we can't really show "Orders" if the user is not logged in. Let's fix that.
 
-All you're going to do is edit `app.component.html` and add `@if` conditions to each of the `<a [routerLink]="whatever">` tags.
+All you're going to do is edit `app.component.html` and add `@if` conditions to each of the `<a routerLink="whatever">` tags.
 
 1. If the user is logged in, show "Orders", "Areas", "Logout", and the greeting `<span>` that says hello to the user. (Hint: The `user` signal will have something in it.)
 
