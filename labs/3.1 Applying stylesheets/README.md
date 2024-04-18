@@ -115,7 +115,9 @@ Earlier in the course we set an error message if a login failed. Now let's make 
 ```
 To this:
 ```html
-<div *ngIf="error()" class="danger alert">{{ error() }}</div>
+@if (error()) {
+<div class="danger alert">{{ error() }}</div>
+}
 ```
 
 Now if you put in a bad user/password combination, you'll see a much better message style. Test it out if you like by hardcoding a bad password into `login.component.ts` in the `login()` method.
@@ -137,11 +139,13 @@ getCssClass(order: any) {
 
 3. Now use that function in `orders.component.html` when drawing each order in the list:
 ```html
-<div *ngFor="let order of orders()" [routerLink]="'/orders/'+order.id" [class]="getCssClass(order)">
+@for (order of orders() ; track order.id) {
+<div routerLink="'/orders/'+order.id" [class]="getCssClass(order)">
   id: {{order.id}}
   area: {{order.area}}
   status: {{order.status}}
 </div>
+}
 ```
 
 (Note that there's another way to do this with an [attribute directive](https://stackoverflow.com/a/41974490/88373). You may like it better.)
